@@ -2,39 +2,47 @@ import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt
 import scipy.optimize as opt 
-
 from scipy.optimize import minimize 
 from sklearn.preprocessing import PolynomialFeatures
 
-from utils import load_csv, sigmoid, cost_function, regularised_cost_function, regularised_gradient
-
 
 def clean_data(file_path, variables): 
-    data = load_csv(file_path)
+    data = pd.read_csv(file_path, header=None)
     data.columns = variables
     return data
 
 def extract_features(data): 
     x = data.iloc[:, :-1]
-    m = len(x) 
-    intercept_variable = np.ones(m) 
+    number_of_samples = len(x) 
+    intercept_variable = np.ones(number_of_samples) 
     x = np.c_[intercept_variable, x]
 
     y = data.iloc[:,2]
     y = y[:, np.newaxis]
-
     return x, y
 
-def compute_gradient(theta, x, y):
-    m = len(y) 
-    h = sigmoid(x.dot(theta.reshape(-1, 1))) 
+def sigmoid(z): 
+    return 1 / (1+np.exp(-z))
 
-    delta = x.T.dot(h-y) 
-    gradient = (1/m) * delta 
+def compute_cost(theta, x, y):
+    number_of_samples = len(x)
+    predictions = sigmoid(x @ theta)
+
+    negative_cost = np.log(predictions).T @ y
+    positive_cost = np.log(1-predictions).T @ (1-y)
+    cost = (-1/number_of_samples) * (negative_cost + positive_cost)
+    return sum(cost)
+
+def compute_gradient(theta, x, y):
+    number_of_samples = len(y) 
+    predictions = sigmoid(x @ theta.reshape(-1, 1))
+
+    delta = x.T @ (predictions-y) 
+    gradient = (1/number_of_samples) * delta 
     return gradient.flatten()
 
 def optimised_cost(theta, x, y): 
-    return minimize(cost_function, 
+    return minimize(compute_cost, 
                     theta, 
                     args=(x, y), 
                     method=None, 
@@ -42,10 +50,9 @@ def optimised_cost(theta, x, y):
                     options={'maxiter':400})
 
 def accuracy(theta, x, y, threshold): 
-    p = sigmoid(x.dot(theta.T)) >= threshold
-    p = p.astype('int') 
-
-    return 100 * sum(p == y.ravel())/p.size
+    probability = sigmoid(x.dot(theta.T)) >= threshold
+    probability = probability.astype('int') 
+    return 100 * sum(probability == y.ravel())/probability.size
 
 def plot_data(data, xlabel, ylabel): 
     def get_x(data): 
@@ -57,7 +64,7 @@ def plot_data(data, xlabel, ylabel):
     admitted = data[data.iloc[:, -1] == 1]
     not_admitted = data[data.iloc[:, -1] == 0]
     plt.scatter(get_x(admitted), get_y(admitted), marker='+', color='black', label='passed')
-    plt.scatter(get_x(not_admitted), get_y(not_admitted), marker='o', color='yellow', label='failed admitted') 
+    plt.scatter(get_x(not_admitted), get_y(not_admitted), marker='o', color='yellow', edgecolor='black', label='failed admitted') 
     plt.legend(loc='upper right')
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
@@ -70,12 +77,23 @@ def insert_polynomial_features(x):
     polynomial_features = PolynomialFeatures(6)
     return polynomial_features.fit_transform(x)
 
-def compute_regularised_gradient(theta, lambda_value, x, y):
+def compute_regularised_cost(theta, lambda_value, x, y): 
     m = y.size
-    h = sigmoid(x.dot(theta.reshape(-1,1)))
+    h = sigmoid(x.dot(theta))
+    
+    negative_cost = np.log(h).T.dot(y)
+    positive_cost = np.log(1-h).T.dot(1-y)
+    regularisation = (lambda_value/(2*m))*np.sum(np.square(theta[1:]))
 
-    intial_gradient = (1/m) * x.T.dot(h-y) 
-    regularisation = (lambda_value/m) * np.r_[[[0]], theta[1:].reshape(-1,1)]
+    cost = (-1/m) * (negative_cost + positive_cost) + regularisation
+    return sum(cost)
+
+def compute_regularised_gradient(theta, lambda_value, x, y):
+    number_of_samples = y.size
+    predictions = sigmoid(x @ theta.reshape(-1,1))
+
+    intial_gradient = (1/number_of_samples) * x.T @ (h-y) 
+    regularisation = (lambda_value/number_of_samples) * np.r_[[[0]], theta[1:].reshape(-1,1)]
     gradient = initial_gradient + regularisation
     return gradient.flatten()
 
@@ -86,15 +104,15 @@ if __name__ == '__main__':
     variables = ['score_1', 'score_2', 'admitted']
     exam_data = clean_data(file_path, variables)
 
-    xlabel = ('exam_score_1', 'exam_score_2')
-    ylabel = ('microchip test 2')
-    plot_data(exam_data, xlabel, ylabel)
+    x_label = ('exam_score_1')
+    y_label = ('exam_score_2')
+    plot_data(exam_data, x_label, y_label)
 
     x, y = extract_features(exam_data)
-    m, n = x.shape
-    theta = np.zeros(n)
+    number_of_samples, features = x.shape
+    theta = np.zeros(features)
 
-    cost = cost_function(theta, x, y)
+    cost = compute_cost(theta, x, y)
     optimised_cost_function = optimised_cost(theta, x, y)
 
     threshold = 0.5
@@ -102,8 +120,6 @@ if __name__ == '__main__':
     optimised_theta = optimised_cost_function.x
     sigmoid(np.array(exam_score_samples).dot(optimised_theta.T))
     accuracy = accuracy(optimised_theta, x, y, threshold)
-
-    # plot decision boundary 
 
 
     # PART 2 
@@ -121,4 +137,4 @@ if __name__ == '__main__':
     theta = np.zeros(n)
     lambda_value = 1
 
-    regularised_cost = regularised_cost_function(theta, lambda_value, x, y)
+    regularised_cost = compute_regularised_cost(theta, lambda_value, x, y)
