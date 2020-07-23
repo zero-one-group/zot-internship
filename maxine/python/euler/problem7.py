@@ -4,4 +4,9 @@ def is_prime(n):
     for d in range (2,n):
         if n%d ==0:
             return False
-        return True
+    return True
+
+def nth_prime(n):
+    
+a = list(i for i in range(2,1e9) if is_prime(i))
+a[101]

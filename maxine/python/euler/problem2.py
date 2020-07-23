@@ -2,5 +2,4 @@
 
 Find the sum of all the multiples of 3 or 5 below 1000"
 
-numbers = [x for x in range (1,1000) if x % 5 == 0 or x % 3 == 0 ]
-sum (numbers)
+sum([x for x in range (1,1000) if x % 5 == 0 or x % 3 == 0])

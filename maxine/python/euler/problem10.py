@@ -8,4 +8,4 @@ def is_prime(n):
                 if n % d ==0:
                     return False
             return True
-sum(i for i in range(10) if is_prime(i))
+sum(i for i in range(2000000) if is_prime(i))
