@@ -74,7 +74,12 @@ np.sum(range(5))            #26
 #29
 
 np.intersect1d(arr4,arr4)           #30 - common values between two arrays
-#31
+with np.seterr(all='ignore'):
+    np.intersect1d(arr4,arr5)           #31 ignore numpy warnings
+
+np.sqrt(-1) == np.emath.sqrt(-1)        #32 False, due to imaginary number
+
+np.datetime64('today')
 #32
 #33
 #34
@@ -93,5 +98,5 @@ np.intersect1d(arr4,arr4)           #30 - common values between two arrays
 #47
 #48
 #49
-#50#31
+#50
 
