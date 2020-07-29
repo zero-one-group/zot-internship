@@ -31,5 +31,5 @@ def chain_of_iterative_seq(n):
         x += 1
     return x
 
-print ("the longest chain are (sequence, starting no.)", max((chain_of_iterative_seq(i),i) for i in
-                                     range(14)))
+print ("the longest chain are (sequence, starting no.)")
+max((chain_of_iterative_seq(i),i) for i in range(1000000))
