@@ -58,7 +58,7 @@ def generate_samples(samples):
 
 def compute_probability(samples, theta):
     samples = generate_samples(samples)
-    return sigmoid(np.array(exam_score_samples).dot(optimised_theta.T))
+    return sigmoid(np.array(samples).dot(optimised_theta.T))
 
 def accuracy(theta, inputs, outputs, threshold): 
     probability = sigmoid(inputs @ theta.T) >= threshold
@@ -115,8 +115,8 @@ if __name__ == '__main__':
     column_names = ['score_1', 'score_2', 'admitted']
     exam_data = clean_data(file_path, column_names)
 
-    xlabel = ('exam_score_1')
-    ylabel = ('exam_score_2')
+    xlabel = 'exam_score_1'
+    ylabel = 'exam_score_2'
     plot_data(exam_data, xlabel, ylabel)
 
     inputs, outputs = extract_variables(exam_data)
@@ -128,6 +128,8 @@ if __name__ == '__main__':
 
     samples = [1, 45, 85]
     sample_admission_probability = compute_probability(samples, optimised_theta)
+
+    threshold = 0.5
     accuracy = accuracy(optimised_theta, inputs, outputs, threshold)
 
 
@@ -136,8 +138,8 @@ if __name__ == '__main__':
     column_names = ['test_2', 'test_2', 'pass']
     microchip_data = clean_data(file_path, column_names)
 
-    xlabel = ('microchip test 1')
-    ylabel = ('microchip test 2')
+    xlabel = 'microchip test 1'
+    ylabel = 'microchip test 2'
     plot_data(microchip_data, xlabel, ylabel)
 
     inputs, outputs = extract_variables(microchip_data)
