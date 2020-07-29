@@ -1,4 +1,4 @@
-'The following iterative sequence is defined for the set of positive integers:
+"""The following iterative sequence is defined for the set of positive integers:
 
     n → n/2 (n is even)
     n → 3n + 1 (n is odd)
@@ -15,16 +15,21 @@
         Which starting number, under one million, produces the longest chain?
 
         NOTE: Once the chain starts the terms are allowed to go above one
-        million.'
+        million"""
 
-def count_terms(n):
-    x=1
-    while n>1:
-        if n%2 == 0:
-            n = n/2
-            x+=1
-        else:
-            n = 3*n+1
-            x+=1
-        return x
-max([(count_terms(i),i) for i in range (1,1000000)])
+import itertools
+def number_rule(n):
+    if n % 2 == 0:
+        return n/2
+    else:
+        return 3*n + 1
+
+def chain_of_iterative_seq(n):
+    x = 1
+    while n > 1:
+        n = number_rule(n)
+        x += 1
+    return x
+
+print ("the longest chain are (sequence, starting no.)", max((chain_of_iterative_seq(i),i) for i in
+                                     range(14)))
