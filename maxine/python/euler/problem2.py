@@ -6,11 +6,18 @@ terms. By starting with 1 and 2, the first 10 terms will be:
     By considering the terms in the Fibonacci sequence whose values do not
     exceed four million, find the sum of the even-valued terms."""
 
-def fib_sequence(num):
-    if num <= 1:
-        return num
-    else:
-        return(fib_sequence(num-1) + fib_sequence(num-2))
-list(fib_sequence(i) for i in range(1000) if fib_sequence(i) < 4000000)
 
+def fib_sequence(num):
+    a, b = 0, 1
+    for _ in range(num):
+        yield a
+        a, b = b, a + b
+
+
+def is_even(num):
+    if num % 2 == 0:
+        return True
+
+
+sum(fib for fib in fib_sequence(50) if fib < 4000000 and is_even(fib))
 
