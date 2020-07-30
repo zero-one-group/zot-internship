@@ -2,6 +2,8 @@
 Find the sum of all the primes below two million."""
 
 import math
+
+
 def is_prime(number):
     if number == 2:
         return True
@@ -11,5 +13,6 @@ def is_prime(number):
         if number % i == 0:
             return False;
     return True  
+
 
 sum(i for i in range(2000000) if is_prime(i))

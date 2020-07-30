@@ -3,7 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy import linalg as la
 
+
 x = 15
+
 
 def squared(x):
     return x ** 2
