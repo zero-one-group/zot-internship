@@ -1,21 +1,22 @@
 #!/usr/bin/env python
 import math
-def maxPrimeFactors(n):
-    maxPrime = -1
+
+def max_prime_factors(n):
+    max_prime = -1
     while n % 2 == 0:
-        maxPrime = 2
+        max_prime = 2
         n >>= 1
 
     for i in range(3, int(math.sqrt(n)) + 1, 2):
         while n % i == 0:
-            maxPrime = i
+            max_prime = i
             n = n / i
 
     if n > 2:
-        maxPrime = n
+        max_prime = n
 
-    return int(maxPrime)
+    return int(max_prime)
 
 n = 600851475143
-print(maxPrimeFactors(n))
+print(max_prime_factors(n))
 
