@@ -18,18 +18,22 @@
         million"""
 
 import itertools
+
+
 def number_rule(n):
     if n % 2 == 0:
         return n/2
     else:
         return 3*n + 1
 
-def chain_of_iterative_seq(n):
-    x = 1
-    while n > 1:
-        n = number_rule(n)
-        x += 1
-    return x
+
+def chain_of_iterative_seq(num):
+    counter = 1
+    while num > 1:
+        num = number_rule(num)
+        counter += 1
+    return counter
+
 
 print ("the longest chain are (sequence, starting no.)")
 max((chain_of_iterative_seq(i),i) for i in range(1000000))

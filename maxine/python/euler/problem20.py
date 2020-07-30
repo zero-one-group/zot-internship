@@ -5,6 +5,10 @@ and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
 Find the sum of the digits in the number 100!"""
 
 import math
+
+
 def sum_of_digits_in_factorial(num):
     return sum(int(i) for i in str(math.factorial(num)))
+
+
 sum_of_digits_in_factorial(100)

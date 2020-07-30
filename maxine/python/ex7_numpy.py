@@ -1,13 +1,17 @@
+import math
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy import linalg as la
-import matplotlib.pyplot as plt
-import math
 
 x = 15
+
 def squared(x):
     return x ** 2
+
+
 def cube(x):
     return x ** 3
+
 
 theta = 90 
 math.sin(theta)         #theta is in radians

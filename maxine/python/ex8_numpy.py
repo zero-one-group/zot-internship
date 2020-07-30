@@ -1,4 +1,6 @@
 import numpy as np
+
+
 vec1 = np.array([ -1., 4., -9. ])
 mat1 = np.array([[ 1., 3., 5. ], [7., -9., 2.], [4., 6., 8. ]])
 
@@ -27,28 +29,28 @@ np.where(vec1 == np.min(vec1))      #location of smallest element
 
 mat1.min()
 
-A=np.array([[17, 24, 1, 8, 15],
+a=np.array([[17, 24, 1, 8, 15],
            [23, 5, 7, 14, 16],
            [ 4, 6, 13, 20, 22 ],
            [10, 12, 19, 21, 3],
            [11, 18, 25, 2, 9]])
 
-np.sum(A, axis=0)
-np.sum(A, axis=1)
-np.sum(np.diag(A))
-np.sum(np.fliplr(A))
+np.sum(a, axis=0)
+np.sum(a, axis=1)
+np.sum(np.diag(a))
+np.sum(np.fliplr(a))
 
-M=np.random.randn(10,10)
-M
+m=np.random.randn(10,10)
+m
 
-MUL = M[:5, :5]
-MUL
+mul = m[:5, :5]
+mul
 
-MUR = M[5:, :5]
-MUR
+mur = m[5:, :5]
+mur
 
-MLL = M[:5, 5:]
-MLL
+mll = m[:5, 5:]
+mll
 
-MLR = M[5:, 5:]
-MLR
+mlr = m[5:, 5:]
+mlr

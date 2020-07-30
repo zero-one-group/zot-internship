@@ -8,9 +8,14 @@ If all the numbers from 1 to 1000 (one thousand) inclusive were written out in
 words, how many letters would be used?"""
 
 import inflect
-p = inflect.engine()        #library to convert number to words
+
+
+p = inflect.engine()        
+
 
 def letters_in_numbers(num):
     words = p.number_to_words(num).replace('-', ' ').split()
     return sum(len(i) for i in words)
+
+
 sum(letters_in_numbers(i) for i in range(1000))

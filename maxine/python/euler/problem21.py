@@ -5,12 +5,18 @@ For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 a
 
 Evaluate the sum of all the amicable numbers under 10000."""
 
+
 def sum_of_factors(x):
     return sum(i for i in range(1,x) if x % i == 0)
+
+
 def is_amicable(n):
     if n == sum_of_factors(sum_of_factors(n)):
         return True
+
+
 def sum_amicable_numbers(num):
     return sum(i for i in range(num) if is_amicable(i))
+
 
 sum_amicable_numbers(10000)
