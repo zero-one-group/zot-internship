@@ -34,11 +34,11 @@ print('tomorrow: ', np.datetime64('today', 'D') + np.timedelta64(1, 'D'))
 np.arange('2020-07', '2020-08', dtype = 'datetime64[D]')
 
 #Calculated in place, cannot be copied
-a = np.ones(6, dtype = int).reshape(2, 3)
-b = np.ones(6, dtype = int).reshape(2, 3)*2
-b = a + b 
-a = (-a)/2
-a*b
+array = np.ones(6, dtype = int).reshape(2, 3)
+array_reshape = np.ones(6, dtype = int).reshape(2, 3)*2
+array_reshape = array + array_reshape 
+array = (-array)/2
+array*array_reshape
 
 #Go to the integer part of the array
 data = np.random.uniform(0, 10, 10)
@@ -58,21 +58,21 @@ data = np.tile(np.arange(5, dtype = int), [5, 1])
 print(u'method two: \ n', data)
 
 #Generator function that generates 10 integers and then build array
-def generate():
+def generate_ten_integers():
     for i in range(10):
         yield i 
-data = np.fromiter(generate(), dtype = float, count = -1)
+data = np.fromiter(generate_ten_integers(), dtype = float, count = -1)
 print('data; \n', data)
 
 #create vector size 10 values from 0-1
-data1 = np.linspace(0, 1, 11, endpoint = False)[1:]
-data1
+data = np.linspace(0, 1, 11, endpoint = False)[1:]
+data
 
 #create random vector and sort it
-data = np.random.random(10)
-print('data: \n', data)
-data.sort()
-print('after sort: \n', data)
+random_vector = np.random.random(10)
+print('data: \n', random_vector)
+random_vector.sort()
+print('after sort: \n', random_vector)
 
 #use reduce, quicker than merge and sum
 data = np.arange(100000)
@@ -80,28 +80,28 @@ data = np.arange(100000)
 %time print('np.add.reduce: ', np.add.reduce(data))
 
 #check if two arrays are equal
-a = np.array([1, 2, 3])
-b = np.array([1, 2, 3])
-print(u'Method one (no difference found):', False in np.equal(a, b))
-print(u'Method Two: ', np.array_equal(a, b))
+array1 = np.array([1, 2, 3])
+array2 = np.array([1, 2, 3])
+print(u'Method one (no difference found):', False in np.equal(array1, array2))
+print(u'Method Two: ', np.array_equal(array1, array2))
 
 #two arrays are not equal
-a = np.array([1, 2, 3])
-b = np.array([1, 2, 4])
-print(u'Method one (discover the difference):', False in np.equal(a, b))
-print(u'Method Two: ', np.array_equal(a, b))
+array1 = np.array([1, 2, 3])
+array2 = np.array([1, 2, 4])
+print(u'Method one (discover the difference):', False in np.equal(array1, array2))
+print(u'Method Two: ', np.array_equal(array1, array2))
 
 #create read-only array
 data = np.zeros(10)
 data.flags.writeable = False
 
 #matrix representing cartesian coordinates convert to polar coordinates
-Z = np.random.random((10, 2))
-X, Y = Z[:, 0], Z[:, 1]
-R = np.sqrt(X**2 + Y**2)
-T = np.arctan2(Y, X)
-print(R)
-print(T)
+matrix = np.random.random((10, 2))
+X, Y = Z[:, 0], matrix[:, 1]
+cartesian_coordinates = np.sqrt(X**2 + Y**2)
+polar_coordinates = np.arctan2(Y, X)
+print(cartesian_coordinates)
+print(polar_coordinates)
 
 #create random vector of size 10 replace max value with 0
 data = np.random.random(10)
@@ -121,8 +121,8 @@ data2 = data1 * 5
 print('data1: ', data1)
 print('data2: ', data2)
 
-result = 1 / (data1 - data2)
-print('result: \n', result)
+cauchy_matrix = 1 / (data1 - data2)
+print('result: \n', cauchy_matrix)
 
 #print min and max representable value for each numpy scalar type
 for dtype in [np.int8, np.int32, np.int64]:
