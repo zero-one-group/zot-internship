@@ -1,23 +1,24 @@
 #!/usr/bin/env python
+#what is the first triangle number to have over 500 divisors
 
 def triangle_number(n):
-    return sum ([i for i in range(1, n + 1)])
+    return sum([i for i in range(1, n + 1)])
 
-j = 0
-n = 0
+number = 0
+result = 0
 count_factors = 0
 
 while count_factors <= 500:
     count_factors = 0
-    j += 1
-    n = triangle_number(j)
+    number += 1
+    result = triangle_number(number)
 
     i = 1
-    while i <= n*.5:
-        if n % i == 0:
+    while i <= result*.5:
+        if result % i == 0:
             count_factors += 1
         i += 1
 
     count_factors *= 2
 
-print(n)
+print(result)
