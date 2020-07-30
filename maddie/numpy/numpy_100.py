@@ -14,27 +14,27 @@ print(Z)
 #77
 #negate a boolean, or change the sign of a float inplace
 
-b = np.random.randint(0, 1, 100)
-np.logical_not(b, out=b)
+random_array = np.random.randint(0, 1, 100)
+np.logical_not(random_array, out=random_array)
 
-b = np.random.uniform(-1.0, 1.0, 100)
-np.negative(b, out=b)
+random_array = np.random.uniform(-1.0, 1.0, 100)
+np.negative(random_array, out=random_array)
 
 #78
-#with 2 sets of points P0, P1 describing lines (2d) and a pointp, how to compute distance from p to each line i (PO[i], P1[i])
+#with 2 sets of points P0, P1 describing lines (2d) and a point p, how to compute distance from p to each line i (PO[i], P1[i])
 
-def dis(P0, P1, p):
-    T = P1 - P0
-    L = (T**2).sum(axis=1)
-    U = -((P0[:,0]-p[...,0])*T[:,0] + (P0[:,1]-p[...,1]*T[:,1]) / L)
-    U = U.reshape(len(U),1)
-    D = P0 + U*T - p 
-    return np.sqrt((D**2).sum(axis=1))
+def distance(P0, P1, p):
+    difference = P1 - P0
+    length = (difference**2).sum(axis=1)
+    unit = -((P0[:,0]-p[...,0])*difference[:,0] + (P0[:,1]-p[...,1]*difference[:,1]) / length)
+    unit = unit.reshape(len(unit),1)
+    distance_result = P0 + unit*difference - p 
+    return np.sqrt((distance_result**2).sum(axis=1))
 
 P0 = np.random.uniform(-10,10,(10,2))
 P1 = np.random.uniform(-10,10,(10,2))
 p = np.random.uniform(-10,10,(1, 2))
-print(dis(P0, P1, p))
+print(distance(P0, P1, p))
 
 #79
 #2 points P0, P1 describing lines and a set of points P, how to compute distance from each point j (P[j]) to each line i (P0[i], P1[i])
@@ -48,60 +48,61 @@ print(np.array([dis(P0,P1,p_i) for p_i in p]))
 #80
 #use an arbitrary array to write a function that extracts a subpart with a fixed shape and centered on a given element
 
-A = np.random.randint(0, 9,(3, 3))
+arbitrary_array = np.random.randint(0, 9,(3, 3))
 shape = (5, 5)
 fill = 0
 position = (1, 1)
 
-R = np.ones(shape, dtype=A.dtype)*fill
-W = np.array(list(position)).astype(int)
-Rs = np.array(list(R.shape)).astype(int)
-As = np.array(list(A.shape)).astype(int)
+ones_array = np.ones(shape, dtype=arbitrary_array.dtype)*fill
+list_position = np.array(list(position)).astype(int)
+ones_shape = np.array(list(ones_array.shape)).astype(int)
+arbitrary_shape = np.array(list(arbitrary_array.shape)).astype(int)
 
-R_start = np.zeros((len(shape),)).astype(int)
-R_stop = np.array(list(shape)).astype(int)
-A_start = (W-Rs//2)
-A_stop = (W+Rs//2)+As%2
+ones_start = np.zeros((len(shape),)).astype(int)
+ones_stop = np.array(list(shape)).astype(int)
+arbitrary_start = (list_position-ones_shape//2)
+arbitrary_stop = (list_position+ones_shape//2)+arbitrary_shape%2
 
 
-r = [slice(start, stop) for start,stop in zip(R_start,R_stop)]
-a = [slice(start,stop) for start,stop in zip(A_start,A_stop)]
-R[r] = A[a]
-print(A)
-print(R)
+slice_ones = [slice(start, stop) for start,stop in zip(ones_start,ones_stop)]
+slice_arbitrary = [slice(start,stop) for start,stop in zip(arbitrary_start,arbitrary_stop)]
+R[slice_ones] = A[slice_arbitrary]
+print(arbitrary_array)
+print(ones_array)
 
 #81
 #consider an array Z = [1,2,3,4,5,6,7,8,9,10,11,12,13,14] how to generate an array R = [[1,2,3,4], [2,3,4,5], [3,4,5,6],...,[11,12,13,14]]
 
 from numpy.lib import stride_tricks
-A = np.arange(1, 15, dtype=np.uint32)
+Z = np.arange(1, 15, dtype=np.uint32)
 R = stride_tricks.as_strided(A, (11, 4), (4, 4))
 print(R)
 
 #82
 #compute a matrix rank
 
-A = np.random.uniform(0, 1, (10, 10))
-B, C, D = np.linalg.svd(A)
-rank = np.sum(A > 1e-10)
+new_matrix = np.random.uniform(0, 1, (10, 10))
+B, C, D = np.linalg.svd(new_matrix)
+rank = np.sum(new_matrix > 1e-10)
 print(rank)
 
 #83
 #find the most frequent value in an array
 
-A = np.random.randint(0, 10, 50)
-print(np.bincount(A).argmax())
+array = np.random.randint(0, 10, 50)
+print(np.bincount(array).argmax())
 
 #84
 #Extract all the contiguous 3x3 blocks from a random 10x10 matrix
 
 from numpy.lib import stride_tricks
-A = np.random.randint(0, 5,(10, 10))
+
+random_matrix = np.random.randint(0, 5,(10, 10))
 m = 3
-h = 1 + (A.shape[0]-3)
-k = 1 + (A.shape[1]-3)
-B = stride_tricks.as_strided(A, shape=(h, k, m, m), strides=A.strides + A.strides)
-print(B)
+h = 1 + (random_matrix.shape[0]-3)
+k = 1 + (random_matrix.shape[1]-3)
+blocks = stride_tricks.as_strided(random_matrix, shape=(h, k, m, m), strides=random_matrix.strides + random_matrix.strides)
+print(blocks)
 
 #85
 #create 2D array subclass such that Z[i,j] == Z[j,i]
@@ -128,23 +129,23 @@ print(Q)
 
 #87
 #use a 16x16 array to get the block sum (block size is 4x4)
-A = np.ones((16, 16))
-L = 4
-T = np.add.reduceat(np.add.reduceat(A, np.arange(0, A.shape[0], L), axis=0),
+array = np.ones((16, 16))
+block_size = 4
+block_sum = np.add.reduceat(np.add.reduceat(A, np.arange(0, A.shape[0], L), axis=0),
                                        np.arange(0, A.shape[1], L), axis=1)
-print(T)
+print(block_sum)
 
 #88
 #implement the game of life using numpy arrays
 
 def iterate(Z):
     #count surrounding neighbours
-    N = (Z[0:-2,0:-2] + Z[0:-2,1:-1] + Z[0:-2,2:] +
+    neighbours = (Z[0:-2,0:-2] + Z[0:-2,1:-1] + Z[0:-2,2:] +
          Z[1:-1,0:-2]                + Z[1:-1,2:] +
          Z[2:  ,0:-2] + Z[2:  ,1:-1] + Z[2:  ,2:])
     #The rules
-    birth = (N==3) & (Z[1:-1,1:-1]==0)
-    survive = ((N==2) | (N==3)) & (Z[1:-1,1:-1]==1)
+    birth = (neighbours==3) & (Z[1:-1,1:-1]==0)
+    survive = ((neighbours==2) | (neighbours==3)) & (Z[1:-1,1:-1]==1)
     Z[...] = 0
     # Apply rules
     return Z
@@ -156,36 +157,36 @@ print(Z)
 #89
 #get the n largest values of an array
 
-A = np.arange(10000)
-np.random.shuffle(A)
+array = np.arange(10000)
+np.random.shuffle(array)
 n = 3
-print(A[np.argsort(A)[-n:]])
+print(array[np.argsort(array)[-n:]])
 
 #90
 #give arbitrary number of vectors, build the cartesian product(every combination of every item)
 
-def cart(arr):
-    arr = [np.asarr(a) for a in arr]
+def cartesian_product(array):
+    array = [np.asarr(a) for a in array]
     shape = (len(x) for x in arr)
 
     ix = np.indices(shape, dtype=int)
     ix = ix.reshape(len(arr), -1).T
 
-    for n, arr in enumerate(arr):
+    for n, array in enumerate(array):
         ix[:, n] = arr[n][ix[:, n]]
         return ix
 
-print(cart(([1, 2, 3], [4, 5], [6, 7])))
+print(cartesian_product(([1, 2, 3], [4, 5], [6, 7])))
 
 #91
 #record array from regular array
 
-A = np.array([("Testing", 2.5, 3),
+regular_array = np.array([("Testing", 2.5, 3),
               ("record", 3.6, 2)])
-Q = np.core.records.fromarrays(B.T,
+record_array = np.core.records.fromarrays(regular_array.T,
                                names = 'col1, col2, col3',
                                formats = 'S8, f8, i8')
-print(Q)
+print(record_array)
 
 #92
 #large vector Z, compute Z to the power of 3 using 3 different methods
@@ -207,25 +208,25 @@ print(rows)
 
 #94
 #10x3 matrix, extract rows with unequal values
-Z = np.random.randint(0, 4,(10, 3))
-print(Z)
-A = np.all(Z[:,1:] == Z[:,:-1], axis=1)
-B = Z[~A]
-print(C)
+matrix = np.random.randint(0, 4,(10, 3))
+print(matrix)
+all_matrix = np.all(matrix[:,1:] == matrix[:,:-1], axis=1)
+extract = matrix[~all_matrix]
+print(extract)
 
 #95
 #vector of ints into a matrix binary representation
-I = np.array([0, 1, 2, 3, 15, 16, 32, 64, 128])
-B = ((I.reshape(-1,1) & (2**np.arange(8))) != 0).astype(int)
-print(B[:,::-1])
+ints_vector = np.array([0, 1, 2, 3, 15, 16, 32, 64, 128])
+binary_rep = ((ints_vector.reshape(-1,1) & (2**np.arange(8))) != 0).astype(int)
+print(binary_rep[:,::-1])
 
-I = np.array([0, 1, 2, 3, 15, 16, 32, 64, 128], dtype=np.uint8)
-print(np.unpackbits(I[:, np.newaxis], axis=1))
+ints_vector = np.array([0, 1, 2, 3, 15, 16, 32, 64, 128], dtype=np.uint8)
+print(np.unpackbits(ints[:, np.newaxis], axis=1))
 
 #96
 #from  a 2D array how to extract unique rows?
-newArr = np.random.randint(0, 10,(5, 2))
-print(np.unique(newArr, axis=0))
+two_d_array = np.random.randint(0, 10,(5, 2))
+print(np.unique(two_d_array, axis=0))
 
 #97
 #with 2 vectors A & B, write the einsum equivalent of inner, outer, sum, and mul function
@@ -259,15 +260,15 @@ X= np.asarray([[1.0, 0.0, 3.0, 8.0],
                [1.5, 2.5, 1.0, 0.0]])
 
 n = 4
-M = np.logical_and.reduce(np.mod(X, 1) == 0, axis = -1)
-M &= (X.sum(axis=-1) == n)
-print(X[M])
+multinomial_distribution = np.logical_and.reduce(np.mod(X, 1) == 0, axis = -1)
+mutinomial_distribution &= (X.sum(axis=-1) == n)
+print(X[multinomial_distribution])
 
 #100
 #compute bootstrapped 95% CIs for the mean of a 1D array X 
 X = np.random.randn(100)
-N = 1000
-idx = np.random.randint(0, X.size, (N, X.size))
-means = X[idx].mean(axis=1)
+number = 1000
+index = np.random.randint(0, X.size, (number, X.size))
+means = X[index].mean(axis=1)
 confint = np.percentile(means, [2.5, 97.5])
 print(confint)
