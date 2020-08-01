@@ -23,18 +23,18 @@ num = '\
 71636269561882670428252483600823257530420752963450'
 
 largest = 0
-i = 0
+digit = 0
 
-while i < len(num) - 4:
-    one = int(num[i])
-    two = int(num[i+1])
-    three = int(num[i+2])
-    four = int(num[i+3])
-    five = int(num[i+4])
+while digit < len(num) - 4:
+    one = int(num[digit])
+    two = int(num[digit+1])
+    three = int(num[digit+2])
+    four = int(num[digit+3])
+    five = int(num[digit+4])
 
     product = one*two*three*four*five
     if product > largest:
         largest = product
-    i += 1
+    digit += 1
 
 print(largest)
