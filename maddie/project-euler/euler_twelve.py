@@ -13,11 +13,11 @@ while count_factors <= 500:
     number += 1
     result = triangle_number(number)
 
-    i = 1
-    while i <= result*.5:
-        if result % i == 0:
+    counter = 1
+    while factors <= result*.5:
+        if result % counter == 0:
             count_factors += 1
-        i += 1
+        counter += 1
 
     count_factors *= 2
 
