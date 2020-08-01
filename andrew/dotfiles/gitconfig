@@ -1,0 +1,4 @@
+[alias]
+	graph = log --all --graph --decorate
+[core]
+	excludesfile = /Users/AHW/.gitignore_global
