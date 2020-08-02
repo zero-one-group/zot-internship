@@ -6,8 +6,8 @@ start_max = -1
 
  def counting(n):
       for i in range(2, 1000000):
-          n = i
-          return n
+          return n = i
+
 
  def collatz_sequence_conditions(n):
       steps = 0
