@@ -25,4 +25,4 @@ start_max = -1
 
 counting(n)
 collatz_sequence_conditions(n)
-  print(start_max)
+print(start_max)
