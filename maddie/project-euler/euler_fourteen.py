@@ -4,9 +4,9 @@ numbers = {1:0}
 max = -1
 start_max = -1
 
- def counting(n):
-      for i in range(2, 1000000):
-          return n = i
+def counting(n):
+    for i in range(2, 1000000):
+        return n = i
 
 
  def collatz_sequence_conditions(n):
