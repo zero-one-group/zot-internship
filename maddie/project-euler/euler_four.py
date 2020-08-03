@@ -1,10 +1,22 @@
 #!/usr/bin/env python
-n = 0
-for a in range(999, 100, -1):
-    for b in range(a, 100, -1):
-        x = a * b
-        if x > n:
-            s = str(a * b)
-            if s == s[::-1]:
-                n = a * b
-print(n)
+def is_palindrome(n):
+    return str(n) == str(n)[::-1]
+
+def two_digit_numbers():
+    return range(10, 100)
+
+max(
+    x*y
+    for x in two_digit_numbers()
+    for y in two_digit_numbers()
+    if is_palindrome(x*y)
+    
+def three_digit_numbers():
+    return range(100, 1000)
+
+max(
+    x*y
+    for x in three_digit_numbers()
+    for y in three_digit_numbers()
+    if is_palindrome(x*y)
+)

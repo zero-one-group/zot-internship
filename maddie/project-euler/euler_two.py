@@ -1,16 +1,8 @@
 #!/usr/bin/env python
-Fibonacci1 = 1
-Fibonacci2 = 2
-a = 2
-while True:
-    Fibonacci1 = Fibonacci1 + Fibonacci2
-    if Fibonacci1 % 2 == 0:
-        if a + Fibonacci1 > 4000000:
-            break
-        a = a + Fibonacci1
-    Fibonacci2 = Fibonacci1 + Fibonacci2
-    if Fibonacci2 % 2 == 0:
-        if a + Fibonacci2 > 4000000:
-            break
-        a = a + Fibonacci2
-print(a)
+def fib_numbers():
+    last, current = 0, 1
+    while current + last < 4e6:
+        last, current = current, current + last
+        yield current
+        
+sum(fib for fib in fib_numbers() if fib % 2 == 0)

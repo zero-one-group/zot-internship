@@ -3,7 +3,7 @@
 def is_prime_number(n):
     return all(n % x != 0 for x in range(2, int(n**.5) + 1))
 
-def nthPrime(index):
+def nth_prime(index):
     number_of_primes = 1
     prime = 2
 
@@ -13,4 +13,4 @@ def nthPrime(index):
             number_of_primes += 1
     return prime
 
-print(nthPrime(10001))
+print(nth_prime(10001))
