@@ -201,7 +201,3 @@ def moving_average(a, n=3):
     return return_cumsum[n - 1:] / n
 data = np.arange(20)
 print(moving_average(data, n=3))
-
-
-
-
