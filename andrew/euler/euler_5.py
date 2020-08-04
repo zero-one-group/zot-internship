@@ -1,4 +1,10 @@
-den = int(input("What is the smallest number that is evenly divisible by all the number from 1 to (enter value) "))
+'''
+What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+'''
+
+den = int(input("What is the smallest number that is evenly divisible \
+by all the number from 1 to (enter value) "))
 
 denom = []
 for i in range(1, den+1):

@@ -1,3 +1,5 @@
+''' Find the largest prime factor of the number 600851475143 '''
+
 # Enter number from input
 a = int(input("Enter number to find its largest prime factor: "))
 

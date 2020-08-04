@@ -1,3 +1,7 @@
+'''
+Consider the terms in the Fibonacci sequence whose values do not exceed four million.
+Find the sum of the even valued terms
+'''
 # initialising sequence
 a = [0, 1]
 
