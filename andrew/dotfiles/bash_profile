@@ -4,7 +4,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ls='ls -GFh'
 alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nodisplay'
-
+alias zot='ssh andrew@zog.hopto.org'
 
 
 # >>> conda initialize >>>
