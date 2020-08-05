@@ -11,7 +11,6 @@ for x in range(2, a):
     if a % x == 0:
         a = a/x
         print(x)
-#        print(a)
         prime_factor.append(x)
     elif a < x:
         break

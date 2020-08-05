@@ -7,11 +7,9 @@ def sqr_total(value):
     '''
     Calculate the sum of the squared value from 1 up to n
     '''
-    res = 0
-    for i in range(1, value+1):
-        squared = i ** 2
-        res = res + squared
-    return res
+    res = [i**2 for i in range(1, value+1)]
+    total = sum(res)
+    return total
 
 
 num = int(input("Enter number to calculate the difference between \
