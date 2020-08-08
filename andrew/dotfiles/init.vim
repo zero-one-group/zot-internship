@@ -11,11 +11,11 @@ call plug#end()
 
 let g:deoplete#enable_at_startup = 5 
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:airline_theme='angr'
 colorscheme gruvbox
 set background=dark
-kd
+set clipboard+=unnamedplus
 
 
 
