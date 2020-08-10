@@ -6,29 +6,23 @@ For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 a
 
 Evaluate the sum of all the amicable numbers under 10000.
 '''
-
+import time
+tic = time.time()
 def divisors(num):
-    divs = []
-    for i in range(1, num):
+    total = 0
+    for i in range(1, int(num/2 + 1)):
         if num % i == 0:
-            divs.append(i)
-    return divs
+            total += i
+    return total
 
 
-# Find all sets of numbers that fits the criteria d(a) = b and d(b) = a
-d_a = []
-d_b = []
+total = 0
 for num in range(1, 10000):
-    a = sum(divisors(num))
-    if a > num:
-        b = sum(divisors(a))
-        if b == num:
-            d_a.append(a)
-            d_b.append(b)
+    a = divisors(num)
+    b = divisors(a)
+    if a > num and b == num:
+        print(a,b)
+        total += a+b
 
-print(d_a)
-print(d_b)
-
-# Calculate sum of all amicable numbers
-total = sum(d_a) + sum(d_b)
 print("Sum of all amicable numbers =", total)
+print(time.time()-tic)
