@@ -20,25 +20,14 @@ d_a = []
 d_b = []
 for num in range(1, 10000):
     a = sum(divisors(num))
-    b = sum(divisors(a))
-    if b == num:
-        d_a.append(a)
-        d_b.append(b)
+    if a > num:
+        b = sum(divisors(a))
+        if b == num:
+            d_a.append(a)
+            d_b.append(b)
 
-# Find index of a = b values and repeated values
-idx = []
-for rows in range(1, len(d_a)):
-    if d_a[rows-1] == d_b[rows]:
-        idx.append(rows-1)
-for rows in range(0, len(d_a)):
-    if d_a[rows] == d_b[rows]:
-        idx.append(rows)
-idx.sort()
-
-# Remove data based on index, leaving amicable pairs
-for i in reversed(idx):
-    d_a.pop(i)
-    d_b.pop(i)
+print(d_a)
+print(d_b)
 
 # Calculate sum of all amicable numbers
 total = sum(d_a) + sum(d_b)
