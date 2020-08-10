@@ -8,7 +8,7 @@ def parse_txt(txt_file):
 
 
 def alphabet_value(word):
-    return sum((ord(uppercase_letter) - 64) for uppercase_letter in word) 
+    return sum((ord(uppercase_letter) - 64) for uppercase_letter in word)
 
 
 def scoring(name_list):
@@ -18,5 +18,5 @@ def scoring(name_list):
     return score
 
 
-names = parse_txt("p022_names.txt")
-scoring(names)
+names_list = parse_txt("p022_names.txt")
+scoring(names_list)
