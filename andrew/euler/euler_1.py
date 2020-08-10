@@ -3,7 +3,7 @@
 lower_bound= int(input("Enter the lower boundary of the range: "))
 upper_bound = int(input("Enter the upper boundary of the range: "))
 
-x = [x for x in range(lower_bound, upper_bound+1) if x % 3 == 0 or x % 5 ==0]
-total = sum(x)
+multiples = [multiples for multiples in range(lower_bound, upper_bound+1) if multiples % 3 == 0 or multiples % 5 ==0]
+total = sum(multiples)
 print("Sum =", total)
 

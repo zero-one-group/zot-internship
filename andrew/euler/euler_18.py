@@ -30,12 +30,9 @@ for i in range(1,len(number)):
 	number[i] = [int(x) for x in number[i]]
 number[0] = [75]
 
-count = 0
 #for loop for bottom-up approach
 for i in range(len(number)-2,-1,-1):
     for j in range(len(number[i])):
         number[i][j] = number[i][j] + max(number[i+1][j], number[i+1][j+1])
-        count += 1
-    number.pop()
 
-print(number)
+print(number[0][0])

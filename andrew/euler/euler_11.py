@@ -25,33 +25,30 @@ raw = [[ 8, 2 , 22, 97, 38, 15,  0, 40,  0, 75,  4,  5,  7, 78, 52, 12, 50, 77, 
 
 dim = len(raw)
 prod = 0
-max = 0
+ans = []
 
 # check vertically
 for i in range(0, dim):
     for j in range(0, dim-3):
         prod = raw[i][j] * raw[i][j+1] * raw[i][j+2] * raw[i][j+3]
-        if prod > max:
-            max = prod
+        ans.append(prod)
 
 # check horizontally
 for i in range(0, dim-3):
     for j in range(0, dim):
         prod = raw[i][j] * raw[i+1][j] * raw[i+2][j] * raw[i+3][j]
-        if prod > max:
-            max = prod
+        ans.append(prod)
 
 # check leading diagonal
 for i in range(0, dim-3):
     for j in range(0, dim-3):
         prod = raw[i][j] * raw[i+1][j+1] * raw[i+2][j+2] * raw[i+3][j+3]
-        if prod > max:
-            max = prod
+        ans.append(prod)
 
 # check other diagonal
 for i in range(0, dim-3):
     for j in range(dim-1, 2, -1):
         prod = raw[i][j] * raw[i+1][j-1] * raw[i+2][j-2] * raw[i+3][j-3]
-        if prod > max:
-            max = prod
-print(max)
+        ans.append(prod)
+
+print(max(ans))

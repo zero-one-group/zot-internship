@@ -3,14 +3,14 @@ Consider the terms in the Fibonacci sequence whose values do not exceed four mil
 Find the sum of the even valued terms
 '''
 
+from itertools import takewhile
 
-prev, after = 0, 1
-total = 0
-while True:
-    prev, after = after, prev + after
-    if after >= 4000000:
-        break
-    if after % 2 == 0:
-        total += after
+def fib(prev=1, after=2):
+    while True:
+        yield prev
+        prev, after = after, prev+after
+
+
+total = sum(num for num in takewhile(lambda num: num < 4000000, fib()) if num % 2 == 0)
 
 print("Sum of the even valued terms of Fibonacci sequence below four million:", total)

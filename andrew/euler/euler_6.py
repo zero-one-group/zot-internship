@@ -7,8 +7,7 @@ def sqr_total(value):
     '''
     Calculate the sum of the squared value from 1 up to n
     '''
-    res = [i**2 for i in range(1, value+1)]
-    total = sum(res)
+    total = sum(i**2 for i in range(1, value+1))
     return total
 
 

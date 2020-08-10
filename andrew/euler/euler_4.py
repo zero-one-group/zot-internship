@@ -5,10 +5,7 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 '''
 
 def is_palindrome(res_str):
-    if res_str == res_str[::-1]:
-        return True
-    else:
-        return False
+    return res_str == res_str[::-1]
 
 
 ans = 0
