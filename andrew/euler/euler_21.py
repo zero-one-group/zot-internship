@@ -6,8 +6,6 @@ For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 a
 
 Evaluate the sum of all the amicable numbers under 10000.
 '''
-import time
-tic = time.time()
 def divisors(num):
     total = 0
     for i in range(1, int(num/2 + 1)):
@@ -25,4 +23,3 @@ for num in range(1, 10000):
         total += a+b
 
 print("Sum of all amicable numbers =", total)
-print(time.time()-tic)
