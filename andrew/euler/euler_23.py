@@ -16,14 +16,12 @@ def is_abundant(num):
     
 abundants = [x for x in range(28124) if is_abundant(x)]
 
-sum_of_two_abundants = []
-for i in range(len(abundants)):
-    for j in range(i, len(abundants)):
-        tot = abundants[i] + abundants[j]
-        if tot < 28123:
-            sum_of_two_abundants.append(tot)
-        else:
-            break
+sum_of_two_abundants = [
+        abundants[i] + abundants[j]
+        for i in range(len(abundants))
+        for j in range(i, len(abundants))
+        if abundants[i] + abundants[j] < 28123]
+
 sum_of_two_abundants = np.unique(sum_of_two_abundants)
 
 answer = [num for num in range(28123) if num not in sum_of_two_abundants]

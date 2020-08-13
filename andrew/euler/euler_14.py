@@ -23,13 +23,10 @@ def collatz(num):
             count += 1
     return count
 
+
 n = 1000000
-chain = []
+chain = [collatz(i) for i in range(1, n + 1)]
 
-for i in range(1, n+1):
-    chain.append(collatz(i))
-
-max = max(chain)
-index = chain.index(max)
-print("Starting point =", index+1)
+index = chain.index(max(chain))
+print("Starting point =", index + 1)
 print("Number of chain =", chain[index])

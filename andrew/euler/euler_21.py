@@ -20,6 +20,6 @@ for num in range(1, 10000):
     b = divisors(a)
     if a > num and b == num:
         print(a,b)
-        total += a+b
+        total += a + b
 
 print("Sum of all amicable numbers =", total)

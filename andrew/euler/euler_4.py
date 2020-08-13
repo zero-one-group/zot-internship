@@ -8,18 +8,12 @@ def is_palindrome(res_str):
     return res_str == res_str[::-1]
 
 
-ans = 0
-num_start = 100
-num_end = 999
-for first_prod in range(num_start, num_end+1):
-    for second_prod in range(num_start, first_prod+1):
-        product = first_prod * second_prod
-        if product > ans and is_palindrome(str(product)) == True:
-            ans = first_prod * second_prod
-            print(first_prod, "x", second_prod, "=", ans)
+palindromic_number = [
+    (first_prod * second_prod)
+    for first_prod in range(100, 1000)
+    for second_prod in range(100, first_prod + 1)
+    if is_palindrome(str(first_prod * second_prod))
+]
 
+print(max(palindromic_number))
 
-# Note: this can be made faster and clearer by counting top down (999 to 100 instead of 100 to 999)
-# For number of digits above 4 (e.g. between 10000 and 99999), it is better to check top down.
-# But it's nice to be able to see the process and other palindromic numbers too
-# To make it even faster, can start trialing from 900 instead of 100

@@ -3,7 +3,7 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 '''
 
 def power(list, power):
-    return [ x**power for x in list ]
+    return [x**power for x in list]
 
 
 total = 0

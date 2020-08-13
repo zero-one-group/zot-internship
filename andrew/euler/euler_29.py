@@ -7,13 +7,9 @@ from itertools import product
 
 a = list(range(2,101))
 b = list(range(2,101))
-
-res = []
 possibilities = list(product(a, b))
 
-for idx in range(len(possibilities)):
-    ans = possibilities[idx][0] ** possibilities[idx][1]
-    res.append(ans)
+res = [possibilities[idx][0] ** possibilities[idx][1]
+        for idx in range(len(possibilities))]
 
-res = np.unique(res)
-print("Distinct terms =", len(res))
+print("Distinct terms =", len(np.unique(res)))

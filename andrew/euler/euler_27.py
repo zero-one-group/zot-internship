@@ -9,18 +9,13 @@ def is_prime(num):
     return num > 1 and all(num % i for i in islice(count(2), int(sqrt(num)-1)))
 
 # As the quadratic formula has to provide us with primes all the way from 0, this means that b must also be a prime
-b = []
-for num in range(-1000, 1001):
-    if is_prime(abs(num)):
-        b.append(num)
+b = [num for num in range(-1000, 1001) if is_prime(abs(num))]
 
 # All primes except for 2 are odd. When n=1, ans=1+a+b must be odd, so a has to be odd as well.
 a = range(-999, 1000, 2)
 
 possibilities = list(product(a, b))
-num_of_primes = []
-a_seq = []
-b_seq = []
+num_of_primes, a_seq, b_seq = [], [], []
 
 for idx in range(len(possibilities)):
     n = 0

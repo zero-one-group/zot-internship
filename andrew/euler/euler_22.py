@@ -6,29 +6,20 @@ For example, when the list is sorted into alphabetical order, COLIN, which is wo
 What is the total of all the name scores in the file?
 '''
 
+import numpy as np
+
+def length_of_names(name):
+    num = [ord(name[alphabet]) - 64 for alphabet in range(0, len(name))]
+    return sum(num)
 
 file = open("names.txt", "r")
 names = file.read()
 file.close()
-
-# Split string to individual names
 names = names.replace('"','')
 names = names.split(',')
-
-# Sort the names alphabetically
 names.sort()
 
-# Convert character in names to numbers, add them, and save them into a list
-alphabet_values = []
-for name in names:
-    tot = 0
-    for alphabet in range(0, len(name)):
-        num = ord(name[alphabet]) - 64
-        tot = tot + num
-    alphabet_values.append(tot)
+alphabet_values = [length_of_names(name) for name in names]
 
-# Multiply by the names' index
-for idx in range(0, len(names)):
-    alphabet_values[idx] = alphabet_values[idx] * (idx+1)
-
-print("Name scores =", sum(alphabet_values))
+name_scores = np.dot(alphabet_values, list(range(1, len(names)+1)))
+print("Name scores =", name_scores)

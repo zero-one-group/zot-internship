@@ -33,6 +33,6 @@ number[0] = [75]
 #for loop for bottom-up approach
 for i in range(len(number)-2,-1,-1):
     for j in range(len(number[i])):
-        number[i][j] = number[i][j] + max(number[i+1][j], number[i+1][j+1])
+        number[i][j] += max(number[i+1][j], number[i+1][j+1])
 
 print(number[0][0])

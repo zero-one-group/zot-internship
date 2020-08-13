@@ -7,7 +7,7 @@ def multiply_list(list_num):
     '''Multiply a list of numbers'''
     result = 1
     for i in list_num:
-        result = result * int(i)
+        result *= int(i)
     return result
 
 
@@ -23,7 +23,7 @@ str_num = "731671765313306249192251196744265747423553491949349698352031277450632
 75499200524063689912560717606058861164671094050775410022569831552000559357297257163626956188267042\
 8252483600823257530420752963450"
 
-n = int(input("Enter number of adjacent digits to be used in calculation: "))
+n = 13 
 res = []
 start = 0
 
@@ -33,9 +33,6 @@ while start < len(str_num)-n+1:
     start = start + 1
     a = multiply_list(list_numbers)
     res.append(a)
-
-# show the results
-# print(res)
 
 # find the maximum
 maximum = max(res)

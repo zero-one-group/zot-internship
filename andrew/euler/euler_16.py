@@ -5,7 +5,5 @@ What is the sum of the digits of the number 2^1000?
 
 power = 1000
 answer = str(2**power)
-numbers = [answer[i:i+1] for i in range(0, len(answer), 1)]
-numbers = list(map(int, numbers))
-total = sum(numbers)
+total = sum(map(int, answer))
 print(total)

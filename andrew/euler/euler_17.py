@@ -6,10 +6,10 @@ NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-
 
 from num2words import num2words
 
-length = []
-for num in range(1, 1001):
-    words = num2words(num)
-    words = words.replace('-', '')
-    words = words.replace(' ', '')
-    length.append(len(words))
-print(sum(length), "letters use to write 1 to 1000 in words")
+def number_to_length_of_word(num):
+    words = (num2words(num)
+                .replace('-', '')
+                .replace(' ', ''))
+    return len(words)
+
+print(sum(number_to_length_of_word(n + 1) for n in range(1000)))
