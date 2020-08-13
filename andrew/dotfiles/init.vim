@@ -1,7 +1,7 @@
 " Neovim plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
@@ -10,12 +10,12 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 
 let g:deoplete#enable_at_startup = 5 
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:airline_theme='angr'
 colorscheme gruvbox
 set background=dark
-kd
+set clipboard+=unnamedplus
 
 
 
