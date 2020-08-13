@@ -6,8 +6,8 @@ Note: This can be reduced down to binary problem. The number of routes can be ca
 import math
 
 def path_counter(grid_size):
-    p = math.factorial(grid_size*2) / (math.factorial(grid_size)**2)
-    return p
+    return math.factorial(grid_size*2) / (math.factorial(grid_size)**2)
+    
 
 n = path_counter(20)
 print(int(n), "routes found")
