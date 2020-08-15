@@ -5,12 +5,7 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 def power(list, power):
     return [x**power for x in list]
 
+total = [num for num in range(2, 350000) 
+        if sum(power([int(digit) for digit in str(num)], 5)) == num]
 
-total = 0
-for num in range(2, 350000):
-    digits = [int(digit) for digit in str(num)]
-    answer = power(digits, 5)
-    if sum(answer) == num:
-        total += num
-
-print("Sum =", total)
+print("Sum =", sum(total))

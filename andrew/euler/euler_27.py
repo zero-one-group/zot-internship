@@ -8,6 +8,12 @@ from itertools import product, count, islice
 def is_prime(num):
     return num > 1 and all(num % i for i in islice(count(2), int(sqrt(num)-1)))
 
+def number_of_primes(n, ans, possibilities, idx):
+    while is_prime(ans):
+        ans = n*n + n*possibilities[idx][0] + possibilities[idx][1]
+        n+= 1
+    return ans, n
+
 # As the quadratic formula has to provide us with primes all the way from 0, this means that b must also be a prime
 b = [num for num in range(-1000, 1001) if is_prime(abs(num))]
 
@@ -20,9 +26,7 @@ num_of_primes, a_seq, b_seq = [], [], []
 for idx in range(len(possibilities)):
     n = 0
     ans = 2
-    while is_prime(ans):
-        ans = n*n + n*possibilities[idx][0] + possibilities[idx][1]
-        n += 1
+    ans, n = number_of_primes(n, ans, possibilities, idx)
     num_of_primes.append(n-1)
     a_seq.append(possibilities[idx][0])
     b_seq.append(possibilities[idx][1])

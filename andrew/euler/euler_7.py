@@ -16,11 +16,11 @@ nth_prime = 10001
 prime = []
 count = 2
 while len(prime) < nth_prime:
-    a = is_prime(count)
-    if a == False:
+    prime_number = is_prime(count)
+    if prime_number == False:
         count += 1
     else:
-        prime.append(a)
+        prime.append(prime_number)
         count += 1
 
 print("prime number =", prime[nth_prime-1])

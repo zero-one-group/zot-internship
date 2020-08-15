@@ -12,13 +12,17 @@ def length_of_names(name):
     num = [ord(name[alphabet]) - 64 for alphabet in range(0, len(name))]
     return sum(num)
 
-file = open("names.txt", "r")
-names = file.read()
-file.close()
-names = names.replace('"','')
-names = names.split(',')
-names.sort()
+def read_data(filename):
+    file = open(filename, "r")
+    names = file.read()
+    file.close()
+    names = names.replace('"','')
+    names = names.split(',')
+    names.sort()
+    return names
 
+
+names = read_data("names.txt")
 alphabet_values = [length_of_names(name) for name in names]
 
 name_scores = np.dot(alphabet_values, list(range(1, len(names)+1)))

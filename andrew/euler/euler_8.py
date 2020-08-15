@@ -10,6 +10,14 @@ def multiply_list(list_num):
         result *= int(i)
     return result
 
+def adjacent_number_multiplier(str_num, adjacent_digits):
+    res = []
+    start = 0
+    while start < len(str_num) - adjacent_digits + 1:
+        list_numbers = str_num[start:(start + adjacent_digits)]
+        start += 1
+        res.append(multiply_list(list_numbers))
+    return res
 
 str_num = "731671765313306249192251196744265747423553491949349698352031277450632623957831801698480\
 18694788518438586156078911294949545950173795833195285320880551112540698747158523863050715693290963\
@@ -23,22 +31,10 @@ str_num = "731671765313306249192251196744265747423553491949349698352031277450632
 75499200524063689912560717606058861164671094050775410022569831552000559357297257163626956188267042\
 8252483600823257530420752963450"
 
-n = 13 
-res = []
-start = 0
+adjacent_digits = 13
+answer = adjacent_number_multiplier(str_num, adjacent_digits)
 
-# multiply adjacent numbers
-while start < len(str_num)-n+1:
-    list_numbers = str_num[start:(start+n)]
-    start = start + 1
-    a = multiply_list(list_numbers)
-    res.append(a)
-
-# find the maximum
-maximum = max(res)
-ind = res.index(maximum)
-
-# show the numbers
-num = str_num[ind:(ind+n)]
+ind = answer.index(max(answer))
+num = str_num[ind:(ind+adjacent_digits)]
 print("Adjacent digits that give the greatest product:", num)
-print("Product is", maximum)
+print("Product is", max(answer))
