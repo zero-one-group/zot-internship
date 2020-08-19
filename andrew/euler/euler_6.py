@@ -13,9 +13,7 @@ num = 100
 squared_sum = sqr_total(num)
 print("squared_sum: ", squared_sum)
 
-total = 0
-for a in range(1, num+1):
-    total = total + a
+total = sum(list(range(1, 101)))
 sum_squared = total ** 2
 print("sum_squared: ", sum_squared)
 

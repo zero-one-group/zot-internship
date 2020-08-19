@@ -3,20 +3,19 @@ Find the thirteen adjacent digits in the 1000-digit number that have the greates
 What is the value of this product?
 '''
 
-def multiply_list(list_num):
-    '''Multiply a list of numbers'''
-    result = 1
-    for i in list_num:
-        result = result * int(i)
-    return result
+import numpy as np
+
+def multiply_list(number):
+    list_num = [int(num) for num in str(number)]
+    return np.prod(list_num)
 
 def adjacent_number_multiplier(str_num, adjacent_digits):
     res = []
     start = 0
     while start < len(str_num) - adjacent_digits + 1:
-        list_numbers = str_num[start:(start + adjacent_digits)]
+        numbers = str_num[start:(start + adjacent_digits)]
         start = start + 1
-        res.append(multiply_list(list_numbers))
+        res.append(multiply_list(numbers))
     return res
 
 str_num = "731671765313306249192251196744265747423553491949349698352031277450632623957831801698480\

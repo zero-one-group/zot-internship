@@ -12,5 +12,4 @@ def prime_eratosthenes(num):
             for j in range(count*count, num+1, count):
                 non_prime_list.append(j)
 
-# revised
 print(next(itertools.islice(prime_eratosthenes(105000), 10000, None)))
