@@ -7,7 +7,7 @@ def is_abundant(num):
     total = 0
     for i in range(1, int(num/2 + 1)):
         if num % i == 0:
-            total += i
+            total = total + i
     if total > num:
         return True
     else:

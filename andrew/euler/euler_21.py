@@ -10,7 +10,7 @@ def divisors(num):
     total = 0
     for i in range(1, int(num/2 + 1)):
         if num % i == 0:
-            total += i
+            total = total + i
     return total
 
 
@@ -20,6 +20,6 @@ for num in range(1, 10000):
     b = divisors(a)
     if a > num and b == num:
         print(a,b)
-        total += a + b
+        total = total + a + b
 
 print("Sum of all amicable numbers =", total)

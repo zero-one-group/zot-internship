@@ -4,7 +4,7 @@ Find the value of d < 1000 for which 1/d contains the longest recurring cycle in
 
 def hand_division(numerator, quotient, recurring_length):
     while numerator not in quotient:
-        recurring_length += 1
+        recurring_length = recurring_length + 1
         quotient[numerator] = recurring_length
         numerator = (numerator % divisors) * 10
     return (numerator, quotient, recurring_length)

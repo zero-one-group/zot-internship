@@ -15,7 +15,7 @@ def divisors(num):
     count = 0
     for x in range(1, int(math.sqrt(num))+1):
         if num % x == 0:
-            count += 1
+            count = count + 1
     return count*2
 
 

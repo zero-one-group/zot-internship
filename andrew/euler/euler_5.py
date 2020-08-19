@@ -11,5 +11,5 @@ while True:
         print(count)
         break
     else:
-        count += num
+        count = count + num
 

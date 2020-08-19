@@ -13,12 +13,10 @@ def length_of_names(name):
     return sum(num)
 
 def read_data(filename):
-    file = open(filename, "r")
-    names = file.read()
-    file.close()
-    names = names.replace('"','')
-    names = names.split(',')
-    names.sort()
+    with open(filename, "r") as file:
+        names = file.read()
+        names = names.replace('"','').split(',')
+        names.sort()
     return names
 
 

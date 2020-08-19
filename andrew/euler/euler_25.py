@@ -7,7 +7,7 @@ def fib():
     count = 1
     while True:
         prev, after = after, prev+after
-        count += 1
+        count = count + 1
         if len(str(prev)) == 1000:
             break
     yield count

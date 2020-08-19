@@ -15,7 +15,7 @@ print("squared_sum: ", squared_sum)
 
 total = 0
 for a in range(1, num+1):
-    total += a
+    total = total + a
 sum_squared = total ** 2
 print("sum_squared: ", sum_squared)
 

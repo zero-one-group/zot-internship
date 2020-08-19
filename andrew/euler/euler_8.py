@@ -7,7 +7,7 @@ def multiply_list(list_num):
     '''Multiply a list of numbers'''
     result = 1
     for i in list_num:
-        result *= int(i)
+        result = result * int(i)
     return result
 
 def adjacent_number_multiplier(str_num, adjacent_digits):
@@ -15,7 +15,7 @@ def adjacent_number_multiplier(str_num, adjacent_digits):
     start = 0
     while start < len(str_num) - adjacent_digits + 1:
         list_numbers = str_num[start:(start + adjacent_digits)]
-        start += 1
+        start = start + 1
         res.append(multiply_list(list_numbers))
     return res
 
