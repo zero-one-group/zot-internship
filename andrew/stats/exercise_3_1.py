@@ -22,11 +22,11 @@ def monte_carlo_integration(upper_limit, lower_limit, number_of_iteration, integ
     return ((upper_limit - lower_limit)/number_of_iteration) * sum(integrand_value)
 
 def mean_confidence_interval(data, confidence):
-    a = 1.0 * np.array(data)
-    n = len(a)
-    m, se = np.mean(a), stats.sem(a)
-    h = se * stats.t.ppf((1 + confidence) / 2., n-1)
-    return m, m-h, m+h
+    data_array = 1.0 * np.array(data)
+    num = len(data_array)
+    mean, standard_err = np.mean(data_array), stats.sem(data_array)
+    space = standard_err * stats.t.ppf((1 + confidence) / 2., num - 1)
+    return mean, mean-space, mean+space
 
 def random_numbers_normal(lower_limit, upper_limit, number_of_iteration):
     scaling = upper_limit - lower_limit
