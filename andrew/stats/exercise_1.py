@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 import math
 import numpy as np
 
-normal_random_variates = stats.norm.rvs(1, math.sqrt(2), size = 100000)
+normal_random_variates = stats.norm.rvs(1, math.sqrt(2), size=int(1e5))
 plt.figure(0)
-plt.hist(normal_random_variates, bins = 100)
+plt.hist(normal_random_variates, bins=100)
 plt.savefig('1.png')
 
 mean = np.mean(normal_random_variates)

@@ -12,10 +12,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 
-def func_1(x, theta):
+def bayes_integrand_1(x, theta):
     return (theta / (1 + theta**2)) * np.exp(-0.5 * (x - theta)**2)
 
-def func_2(x, theta):
+def bayes_integrand_2(x, theta):
     return (1 / (1 + theta**2)) * np.exp(-0.5 * (x - theta)**2)
 
 def monte_carlo_integration(upper_limit, lower_limit, number_of_iteration, integrand_value):
@@ -44,11 +44,11 @@ def random_numbers_cauchy(lower_limit, upper_limit, number_of_iteration):
 # Plotting integrands
 theta = np.linspace(-5, 10, 10000)
 for param in [0, 2, 4]:
-    integrand_1 = func_1(param, theta)
-    integrand_2 = func_2(param, theta)
+    integrand_1 = bayes_integrand_1(param, theta)
+    integrand_2 = bayes_integrand_2(param, theta)
     plt.figure()
-    plt.plot(theta, integrand_1, 'r.', label = 'Integrand 1 (numerator)')
-    plt.plot(theta, integrand_2, 'b.', label = 'Integrand 2 (denominator)')
+    plt.plot(theta, integrand_1, 'r.', label='Integrand 1 (numerator)')
+    plt.plot(theta, integrand_2, 'b.', label='Integrand 2 (denominator)')
     plt.legend()
     plt.savefig('integrands x = ' + str(param) + '.png')
 
@@ -63,8 +63,14 @@ integral_1_array = []
 integral_2_array = []
 for iteration in range(number_of_iteration):
     random_numbers = random_numbers_cauchy(lower_limit, upper_limit, number_of_iteration)
-    integrand_1_value = [func_1(param, random_numbers[i]) for i in range(len(random_numbers))]
-    integrand_2_value = [func_2(param, random_numbers[i]) for i in range(len(random_numbers))]
+    integrand_1_value = [
+            bayes_integrand_1(param, random_numbers[i]) 
+            for i in range(len(random_numbers))
+            ]
+    integrand_2_value = [
+            bayes_integrand_2(param, random_numbers[i]) 
+            for i in range(len(random_numbers))
+            ]
     integral_1 = monte_carlo_integration(upper_limit, lower_limit, number_of_iteration, integrand_1_value)
     integral_2 = monte_carlo_integration(upper_limit, lower_limit, number_of_iteration, integrand_2_value)
     integral_1_array.append(integral_1)
@@ -72,7 +78,7 @@ for iteration in range(number_of_iteration):
 
 answer = np.array(integral_1_array) / np.array(integral_2_array)
 plt.figure()
-plt.hist(answer, bins = 50)
+plt.hist(answer, bins=50)
 plt.savefig('integral x = ' + str(param) + '.png')
 
 # Check number of digits of accuracy with probability 0.95

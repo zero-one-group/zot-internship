@@ -29,14 +29,14 @@ def poisson_simulation(exponential_dist):
 
 
 param = 10 #lambda value
-num_of_samples = 1000000
+num_of_samples = int(1e6)
 
-exponential_dist = stats.expon.rvs(scale = 1/param, size = num_of_samples)
-poisson_dist = stats.poisson.rvs(param, size = num_of_samples)
+exponential_dist = stats.expon.rvs(scale=1/param, size=num_of_samples)
+poisson_dist = stats.poisson.rvs(param, size=num_of_samples)
 
 plt.figure(0)
-plt.hist(poisson_dist, bins = 100, alpha = 0.5, density = True, label = 'Poisson distribution')
-plt.hist(poisson_simulation(exponential_dist), bins = 100, alpha = 0.5, density = True, label = 'Simulation')
-plt.legend(loc = 'upper right')
+plt.hist(poisson_dist, bins=100, alpha=0.5, density=True, label='Poisson distribution')
+plt.hist(poisson_simulation(exponential_dist), bins=100, alpha=0.5, density=True, label='Simulation')
+plt.legend(loc='upper right')
 plt.savefig('Poisson_process.png')
 

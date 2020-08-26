@@ -10,8 +10,8 @@ from scipy import stats
 import matplotlib.pyplot as plt
 import numpy as np
 
-random_uniform_numbers_y = stats.uniform.rvs(0, 0.4, size = 10000)
-random_uniform_numbers_x = stats.uniform.rvs(-8, 16, size = 10000)
+random_uniform_numbers_y = stats.uniform.rvs(0, 0.4, size=10000)
+random_uniform_numbers_x = stats.uniform.rvs(-8, 16, size=10000)
 cauchy_pdf = 1/(np.pi * (1 + (random_uniform_numbers_x ** 2)))
 
 plt.figure(0)
@@ -23,10 +23,10 @@ for idx in range(len(random_uniform_numbers_x)):
 plt.savefig('accept_reject_cauchy')
 
 
-gamma_candidate = stats.gamma.rvs(4, 7, size = 10000)
-gamma_distribution = stats.gamma.rvs(4.3, 6.2, size = 10000)
+gamma_candidate = stats.gamma.rvs(4, 7, size=10000)
+gamma_distribution = stats.gamma.rvs(4.3, 6.2, size=10000)
 plt.figure(1)
-plt.hist(gamma_candidate, bins = 100, alpha = 0.5)
-plt.hist(gamma_distribution, bins = 100, alpha = 0.5)
+plt.hist(gamma_candidate, bins=100, alpha=0.5)
+plt.hist(gamma_distribution, bins=100, alpha=0.5)
 plt.savefig('hist')
 

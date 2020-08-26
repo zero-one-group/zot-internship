@@ -15,17 +15,17 @@ def RMSE(predicted_array, actual):
 theta = 5
 number_of_simulation = 1000
 
-estimator = [max(np.random.uniform(0, theta, size = 100))
+estimator = [max(np.random.uniform(0, theta, size=100))
         for simulation in range(number_of_simulation)]
 
 plt.figure(0)
-plt.hist(estimator, bins = 50, label = 'Estimator')
+plt.hist(estimator, bins=50, label='Estimator')
 plt.legend()
 plt.savefig('estimator.png')
 
 estimated_RMSE = RMSE(estimator, theta)
 plt.figure(1)
-plt.hist(estimated_RMSE, bins = 50, label = 'RMSE')
+plt.hist(estimated_RMSE, bins=50, label='RMSE')
 plt.legend()
 plt.savefig('rmse.png')
 

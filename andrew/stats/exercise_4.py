@@ -4,7 +4,7 @@ Consider the log-normal distribution logN(0, 1), which can be derived by exponen
 
 import numpy as np
 
-normal_dist = np.random.normal(0, 1, size = 10000)
+normal_dist = np.random.normal(0, 1, size=10000)
 log_normal_dist = np.exp(normal_dist)
 
 mean_normal_dist = np.mean(normal_dist)

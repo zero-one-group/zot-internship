@@ -29,31 +29,31 @@ def confidence_interval(data, confidence_level):
     return lower_bound, upper_bound
 
 def bootstrap_t(data, confidence_level):
-    SEM = stats.sem(data)
-    upper_bound = np.mean(data) + (np.percentile(data, confidence_level) * SEM)
-    lower_bound = np.mean(data) - (np.percentile(data, confidence_level) * SEM)
+    standard_error = stats.sem(data)
+    upper_bound = np.mean(data) + (np.percentile(data, confidence_level) * standard_error)
+    lower_bound = np.mean(data) - (np.percentile(data, confidence_level) * standard_error)
     return lower_bound, upper_bound
 
 data = read_data('nerve.txt')
-bootstrap_sample = bootstrap(data, num_of_simulation = 10000)
+bootstrap_sample = bootstrap(data, num_of_simulation=10000)
 
-median = np.median(bootstrap_sample, axis = 1)
+median = np.median(bootstrap_sample, axis=1)
 plt.figure(0)
-plt.hist(median, bins = 10, label = 'Median (bootstrap)')
+plt.hist(median, bins=10, label='Median (bootstrap)')
 plt.savefig('median.png')
 
-skewness = stats.skew(bootstrap_sample, axis = 1)
+skewness = stats.skew(bootstrap_sample, axis=1)
 plt.figure(1)
-plt.hist(skewness, bins = 50, label = 'Skewness (bootstrap)')
+plt.hist(skewness, bins=50, label='Skewness (bootstrap)')
 plt.savefig('skewness.png')
 
 # Basic bootstrap confidence interval
-print("Median CI (Basic) =", confidence_interval(median, confidence_level = 0.95))
-print("Skewness CI (Basic) =", confidence_interval(skewness, confidence_level = 0.95))
+print("Median CI (Basic) =", confidence_interval(median, confidence_level=0.95))
+print("Skewness CI (Basic) =", confidence_interval(skewness, confidence_level=0.95))
 
 # Bootstrap-t confidence interval
-print("Median CI (Bootstrap-t) =", bootstrap_t(median, confidence_level = 0.95))
-print("Skewness CI (Bootstrap-t) =", bootstrap_t(skewness, confidence_level = 0.95))
+print("Median CI (Bootstrap-t) =", bootstrap_t(median, confidence_level=0.95))
+print("Skewness CI (Bootstrap-t) =", bootstrap_t(skewness, confidence_level=0.95))
 
 # Percentile confidence interval
 print("Median CI (Percentile)=", np.percentile(median, [2.5, 97.5]))

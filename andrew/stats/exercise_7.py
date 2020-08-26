@@ -26,7 +26,7 @@ def CI_for_population_proportion(proportion, CI, sample_size):
 
 intervals = []
 for simulation in range(1000):
-    beta_dist = np.random.beta(1, 2, size = 100)
+    beta_dist = np.random.beta(1, 2, size=100)
     mean, lower_bound, upper_bound = mean_confidence_interval(beta_dist, 0.95)
     intervals.insert(simulation, [lower_bound, upper_bound])
 

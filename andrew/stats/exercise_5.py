@@ -16,9 +16,9 @@ for iteration in range(number_of_iteration):
     mean.append(np.mean(cauchy_dist))
 
 plt.figure(0)
-plt.hist(mean, bins = 50)
+plt.hist(mean, bins=50)
 plt.savefig('cauchy_mean.png')
 
 plt.figure(1)
-plt.hist(median, bins = 50)
+plt.hist(median, bins=50)
 plt.savefig('cauchy_median.png')
