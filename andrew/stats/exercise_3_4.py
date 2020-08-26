@@ -40,13 +40,10 @@ print("Error =", (9*np.sqrt(2*np.pi)) - integral)
 
 
 # Importance Sampling
-p_x = stats.norm(0, 1)
-q_x = stats.uniform(10)
-
 value_list = []
 for i in range(number_of_iteration):
     # sample from different distribution
     x_i = np.random.uniform(-8, -1)
-    value = function(x_i) * (p_x.pdf(x_i) / q_x.pdf(x_i))
+    value = function(x_i) * (stats.norm.pdf(x_i) / stats.uniform.pdf(abs(x_i)))
     value_list.append(value)
 

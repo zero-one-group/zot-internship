@@ -38,7 +38,7 @@ def random_numbers_uniform(lower_limit, upper_limit, number_of_iteration):
 def random_numbers_cauchy(lower_limit, upper_limit, number_of_iteration):
     mid_point = (lower_limit + upper_limit)/2
     scaling = upper_limit - lower_limit
-    return stats.cauchy.rvs(loc = mid_point, scale = scaling, size = number_of_iteration)
+    return stats.cauchy.rvs(loc=mid_point, scale=scaling, size=number_of_iteration)
 
 
 # Plotting integrands

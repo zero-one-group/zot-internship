@@ -22,9 +22,9 @@ def poisson_simulation(exponential_dist):
         k_poisson.append(count - 1)
 
     simulated_poisson = [
-            k_poisson[idx] for idx in range(len(k_poisson) - 1) 
-            if k_poisson[idx] >= k_poisson[idx+1]]
-    
+        k_poisson[idx] for idx in range(len(k_poisson) - 1) 
+        if k_poisson[idx] >= k_poisson[idx+1]
+    ]
     return simulated_poisson
 
 

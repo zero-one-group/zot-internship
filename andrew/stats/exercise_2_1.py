@@ -1,7 +1,7 @@
 '''Show the inverse transformation by using N(5, 9) and Exp(12)'''
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 from scipy import stats
 
 # Inverse Transform Sampling applied to exponential distribution

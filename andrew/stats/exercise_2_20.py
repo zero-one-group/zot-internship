@@ -6,27 +6,48 @@ a. Generate normal random variables using a Cauchy candidate in Accept–Reject.
 b. Generate gamma G(4.3, 6.2) random variables using a gamma G(4, 7) candidate.
 '''
 
-from scipy import stats
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy import stats
 
-random_uniform_numbers_y = stats.uniform.rvs(0, 0.4, size=10000)
-random_uniform_numbers_x = stats.uniform.rvs(-8, 16, size=10000)
-cauchy_pdf = 1/(np.pi * (1 + (random_uniform_numbers_x ** 2)))
-
-plt.figure(0)
-for idx in range(len(random_uniform_numbers_x)):
-    if random_uniform_numbers_y[idx] < cauchy_pdf[idx]:
-        plt.plot(random_uniform_numbers_x[idx], random_uniform_numbers_y[idx], 'b+')
+def simulate_normal_with_cauchy():
+    grid = np.linspace(-5, 5, 1000)
+    candidate = np.random.standard_cauchy()
+    g = stats.cauchy.pdf
+    f = stats.norm.pdf
+    M = np.max(f(grid) / g(grid))
+    accept = np.random.random() < (f(candidate) / (M * g(candidate)))
+    if accept:
+        return candidate
     else:
-        plt.plot(random_uniform_numbers_x[idx], random_uniform_numbers_y[idx], 'r+')
-plt.savefig('accept_reject_cauchy')
+        return simulate_normal_with_cauchy()
+
+def simulate_gamma_with_gamma():
+    grid = np.linspace(-5, 5, 1000)
+    candidate = np.random.gamma(7/4, 7)
+    g = stats.cauchy.pdf
+    f = stats.cauchy.pdf
+    M = np.max(f(grid) / g(grid))
+    accept = np.random.gamma(6.2/4.3, 4.3) < (f(candidate) / (M * g(candidate)))
+    if accept:
+        return candidate
+    else:
+        return simulate_gamma_with_gamma()
 
 
-gamma_candidate = stats.gamma.rvs(4, 7, size=10000)
-gamma_distribution = stats.gamma.rvs(4.3, 6.2, size=10000)
+simulated_normal = [simulate_normal_with_cauchy() for _ in range(int(1e4))]
+plot_grid = np.linspace(np.min(simulated_normal), np.max(simulated_normal), 100)
+plt.figure(0)
+plt.hist(simulated_normal, bins=80, density=True, label='Simulated normal')
+plt.plot(plot_grid, stats.norm.pdf(plot_grid), label='Normal distribution')
+plt.legend()
+plt.savefig('cauchy_candidate.png')
+
+simulated_gamma = [simulate_gamma_with_gamma() for _ in range(int(1e4))]
+plot_grid = np.linspace(np.min(simulated_gamma), np.max(simulated_gamma), 100)
 plt.figure(1)
-plt.hist(gamma_candidate, bins=100, alpha=0.5)
-plt.hist(gamma_distribution, bins=100, alpha=0.5)
-plt.savefig('hist')
-
+plt.hist(simulated_gamma, bins=80, density=True, label='Simulated Gamma G(4, 7)')
+plt.plot(plot_grid, stats.gamma.pdf(plot_grid, loc=6.2/4.3, a=6.2/4.3, scale=6.2), label='Gamma distribution G(4, 7)')
+plt.show()
+plt.legend()
+plt.savefig('gamma_candidate.png')

@@ -4,10 +4,9 @@ b. Show that if U ∼ U[0,1], then X = − log U/λ ∼ Exp(λ).
 c. Show that if U ∼ U[0,1], then X = log u/(1−u) is a Logistic(0, 1) random variable.
 '''
 
-from scipy import stats
 import matplotlib.pyplot as plt
 import numpy as np
-
+from scipy import stats
 
 gamma_dist = stats.gamma.rvs(a=1, size=int(1e5))
 beta_dist = stats.beta.rvs(a=3, b=0.5, size=int(1e5))
