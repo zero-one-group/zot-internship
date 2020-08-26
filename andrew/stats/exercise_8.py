@@ -16,13 +16,12 @@ def read_data(filename):
 def bootstrap(data, num_of_simulation):
     bootstrap_sample = []
     for idx in range(num_of_simulation):
-        randomly_chosen_sample = [
-                data[np.random.randint(len(data))]
-                for idx in range(len(data))]
+        randomly_chosen_sample = [data[np.random.randint(len(data))]
+                                  for idx in range(len(data))]
         bootstrap_sample.append(randomly_chosen_sample)
     return np.array(bootstrap_sample)
 
-def CI(data, confidence_level):
+def confidence_interval(data, confidence_level):
     parameter = np.mean(data)
     alpha = 1 - confidence_level
     upper_bound = (2 * parameter) + stats.t.ppf(1-(alpha/2), len(data) - 1)
@@ -49,8 +48,8 @@ plt.hist(skewness, bins = 50, label = 'Skewness (bootstrap)')
 plt.savefig('skewness.png')
 
 # Basic bootstrap confidence interval
-print("Median CI (Basic) =", CI(median, confidence_level = 0.95))
-print("Skewness CI (Basic) =", CI(skewness, confidence_level = 0.95))
+print("Median CI (Basic) =", confidence_interval(median, confidence_level = 0.95))
+print("Skewness CI (Basic) =", confidence_interval(skewness, confidence_level = 0.95))
 
 # Bootstrap-t confidence interval
 print("Median CI (Bootstrap-t) =", bootstrap_t(median, confidence_level = 0.95))
