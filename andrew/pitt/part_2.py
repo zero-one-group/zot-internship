@@ -30,22 +30,22 @@ print(np.where(vec1 == min(vec1)))
 
 print(np.amin(mat1))
 
-A = np.array([[17, 24, 1, 8, 15],
-              [23, 5, 7, 14, 16],
-              [ 4, 6, 13, 20, 22],
-              [10, 12, 19, 21, 3],
-              [11, 18, 25, 2, 9]])
+matrix_a = np.array([[17, 24, 1, 8, 15],
+                     [23, 5, 7, 14, 16],
+                     [ 4, 6, 13, 20, 22],
+                     [10, 12, 19, 21, 3],
+                     [11, 18, 25, 2, 9]])
 
-print(np.add.reduce(A, 0))
-print(np.add.reduce(A, 1))
-print(sum(np.diag(A)))
-print(sum(np.diag(np.fliplr(A))))
+print(np.add.reduce(matrix_a, 0))
+print(np.add.reduce(matrix_a, 1))
+print(sum(np.diag(matrix_a)))
+print(sum(np.diag(np.fliplr(matrix_a))))
 
-B = np.random.rand(100)
-M = B.reshape(10, 10)
+random_number = np.random.rand(100)
+random_matrix = random_number.reshape(10, 10)
 
-MUL = M[:5:1, :5:1]
-MUR = M[:5:1, 5::]
-MLL = M[5::, :5:1]
-MLR = M[5::, 5::]
+upper_left = random_matrix[:5:1, :5:1]
+upper_right = random_matrix[:5:1, 5::]
+lower_left = random_matrix[5::, :5:1]
+lower_right = random_matrix[5::, 5::]
 
