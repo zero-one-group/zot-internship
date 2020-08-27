@@ -18,6 +18,9 @@ plt.hist(sample_norm, bins=10, density=True)
 plt.savefig('test2.png')
 
 print("sample mean is %s" % np.mean(sample_norm))
-print("sample standard error is %s" % np.std(sample_norm))
+print("sample standard deviation (measures variability of individual data to the mean) %s" 
+      % np.std(sample_norm))
+print("standard error of sample mean (how far the sample mean is to the true population mean): %s" 
+      % (np.std(sample_norm) / np.sqrt(len(sample_norm))))
 print("sample kurtosis is %s" % stats.kurtosis(sample_norm))
 print("sample skewness is %s" % stats.skew(sample_norm))
