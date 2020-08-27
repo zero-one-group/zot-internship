@@ -27,3 +27,5 @@ print(ninety_five_confidence_interval)
 
 ninety_confidence_interval = sm.proportion_confint(0.95, 100000, alpha=0.1, method='beta')
 print(ninety_confidence_interval)
+
+# The 95% confidence interval is the range of values where one can be 95% certain that it contains the true mean of the sample. The 95% is thus a probability that the true value will lie between the upper and lower bound of a probability distribution. 
