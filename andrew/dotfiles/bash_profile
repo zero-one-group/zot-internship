@@ -1,10 +1,11 @@
-# add colouts
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 alias ls='ls -GFh'
 alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nodisplay'
-
+alias zot='ssh andrew@zog.hopto.org'
 
 
 # >>> conda initialize >>>
