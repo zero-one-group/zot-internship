@@ -40,4 +40,4 @@ proportion = len(ci_95) / len(intervals)
 lower_end, upper_end = ci_for_population_proportion(proportion, 0.9, len(intervals))
 print("90% CI for the probability that 95% CI contains the true mean =", lower_end, "to", upper_end)
 
-# 95% in 95% confidence interval is how sure you can be that the true mean lies within the intervals. The 95% confidence interval defines a range of values that you can be 95% certain contains the true (population) mean.
+# 95% in 95% confidence interval is how sure you can be that the true mean lies within the intervals in a simulated world. The 95% confidence interval defines a range of values that you can be 95% certain contains the true (population) mean. In other words, when the mean is simulated 100 times, 95 of them will contain the true mean.
