@@ -14,7 +14,7 @@ def generate_mean(sample):
     return np.mean(sample)
 
 
-# Because the 95% confidence interval of the mean was taken and 100 points were taken, 95 of the 100 intervals will contain the true mean value
+# Because the 95% confidence interval of the mean was taken and in total 100,000 points were taken, 95,000 of the 100,000 intervals will contain the true mean value
 
 confidence_level = 0.95
 degrees_freedom = 100000 - 1
