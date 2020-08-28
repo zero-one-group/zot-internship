@@ -43,7 +43,7 @@ def bootstrap_t_ci(data, parameter, nsim, alpha_ci):
 
 sim = 1000
 data_nerve = open_file("nerve.dat.txt")
-print("90% CI of skewness with percentile", percentile_interval(data_nerve,
+print("90% CI of median with percentile", percentile_interval(data_nerve,
                                                                 np.median,
                                                                 sim, 0.1))
 print("90% CI of skewness with percentile", percentile_interval(data_nerve,
