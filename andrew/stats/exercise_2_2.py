@@ -2,9 +2,9 @@
 Two distributions that have explicit forms of the cdf are the logistic and Cauchy distributions. Thus, they are well-suited to the inverse transform method. For each of the following, verify the form of the cdf and then generate 10,000 random variables using the inverse transform.
 '''
 
-from scipy import stats
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy import stats
 
 random_numbers = np.random.rand(int(1e5))
 logistic_dist = stats.logistic.rvs(size=int(1e5))

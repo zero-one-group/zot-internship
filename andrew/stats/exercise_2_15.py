@@ -2,9 +2,10 @@
 The Poisson distribution P(λ) is connected to the exponential distribution through the Poisson process in that it can be simulated by generating exponential random variables until their sum exceeds 1. That is, if Xi ∼ Exp(λ) and if K is the first value for which sum of Xi > 1 for i = 1 to K+1, then K ∼ P(λ). Compare this algorithm with rpois and the algorithm of Example 2.5 for both small and large values of λ.
 '''
 
-from scipy import stats
+
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy import stats
 
 def poisson_simulation(exponential_dist):
     total = 0
@@ -28,11 +29,11 @@ def poisson_simulation(exponential_dist):
     return simulated_poisson
 
 
-param = 10 #lambda value
+scale = 10 #lambda value
 num_of_samples = int(1e6)
 
-exponential_dist = stats.expon.rvs(scale=1/param, size=num_of_samples)
-poisson_dist = stats.poisson.rvs(param, size=num_of_samples)
+exponential_dist = stats.expon.rvs(1/scale, size=num_of_samples)
+poisson_dist = stats.poisson.rvs(scale, size=num_of_samples)
 
 plt.figure(0)
 plt.hist(poisson_dist, bins=100, alpha=0.5, density=True, label='Poisson distribution')

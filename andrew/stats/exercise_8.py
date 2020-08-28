@@ -2,10 +2,10 @@
 Cox and Lewis (1966) reported 799 time intervals between pulses on a nerve fibre. The dataset can be downloaded here. Use the bootstrap to get confidence intervals for the median and skewness of these data. In particular, present basic bootstrap, bootstrap-t and percentile confidence intervals.
 '''
 
-import numpy as np
-from scipy import stats
 import matplotlib.pyplot as plt
+import numpy as np
 import re
+from scipy import stats
 
 def read_data(filename):
     with open(filename, "r") as file:
@@ -16,8 +16,7 @@ def read_data(filename):
 def bootstrap(data, num_of_simulation):
     bootstrap_sample = []
     for idx in range(num_of_simulation):
-        randomly_chosen_sample = [data[np.random.randint(len(data))]
-                                  for idx in range(len(data))]
+        randomly_chosen_sample = np.random.choice(data, size=len(data), replace=True)
         bootstrap_sample.append(randomly_chosen_sample)
     return np.array(bootstrap_sample)
 

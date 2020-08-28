@@ -8,8 +8,8 @@ c. Repeat the experiment with a Monte Carlo integration based on a normal
 simulation and compare both approaches.
 '''
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 from scipy import stats
 
 def bayes_integrand_1(x, theta):

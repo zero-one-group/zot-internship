@@ -12,9 +12,9 @@ Note that this exercise does not suggest using the CLT for normal generations!
 This is a very poor approximation indeed.
 '''
 
-from scipy import stats
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+from scipy import stats
 
 uniform_distribution = [stats.uniform.rvs(loc=-0.5, scale=1, size=int(1e5)) for i in range(1, 13)]
 Z = sum(uniform_distribution)

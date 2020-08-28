@@ -9,41 +9,24 @@ a sample of size Nsim=10^3. (Warning: This choice of g does not provide a
 converging approximation of Ef [h(X)]!)
 '''
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 from scipy import stats
 
 def function(x):
-    return x*((np.exp((-(x-3)**2)/2)) + (np.exp((-(x-6)**2)/2)))
-
-def monte_carlo_integration(upper_limit, lower_limit, number_of_iteration, integrand_value):
-    return ((upper_limit - lower_limit)/number_of_iteration) * sum(integrand_value)
-
-def random_numbers_normal(lower_limit, upper_limit, number_of_iteration):
-    scaling = upper_limit - lower_limit
-    return (np.random.rand(number_of_iteration) * scaling) - (scaling/2)
+    return np.exp(-(x-3)**2/2) + np.exp(-(x-6)**2/2)
 
 
-#(a). E(h(X)) = 9 * sqrt(2*pi) ~ 22.559654..
+number_of_iteration = int(1e5)
 
-# Monte-Carlo Integration
-number_of_iteration = 1000
-lower_limit = -10
-upper_limit = 10
+#(b) Monte carlo approximation
+xs = np.random.randn(number_of_iteration)
+print(np.mean(function(xs)))
 
-random_numbers = random_numbers_normal(lower_limit, upper_limit, number_of_iteration) 
-integrand_value = [function(random_numbers[i]) for i in range(len(random_numbers))]
-integral = monte_carlo_integration(upper_limit, lower_limit, number_of_iteration, integrand_value)
-print("Analytical value =", 9*np.sqrt(2*np.pi))
-print("Numerical value =", integral)
-print("Error =", (9*np.sqrt(2*np.pi)) - integral)
+#(c) Importance Sampling
+xs = np.random.uniform(-8, -1, size=number_of_iteration)
+weights = stats.norm.pdf(xs) / stats.uniform.pdf(xs, loc=-8, scale=7)
+estimate = np.mean(weights * function(xs))
+print(estimate)
 
-
-# Importance Sampling
-value_list = []
-for i in range(number_of_iteration):
-    # sample from different distribution
-    x_i = np.random.uniform(-8, -1)
-    value = function(x_i) * (stats.norm.pdf(x_i) / stats.uniform.pdf(abs(x_i)))
-    value_list.append(value)
 
