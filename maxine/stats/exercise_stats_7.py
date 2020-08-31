@@ -17,6 +17,8 @@ sample_norm = normal_dist(mean, sd, 100)
 plt.hist(sample_norm, bins=10, density=True)
 plt.savefig('test2.png')
 
+sample_norm
+
 print("sample mean is %s" % np.mean(sample_norm))
 print("sample standard deviation (measures variability of individual data to the mean) %s" 
       % np.std(sample_norm))

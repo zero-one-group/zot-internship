@@ -7,8 +7,9 @@ import scipy.stats as stats
 
 
 def open_file(filename):
-    name_file = open(filename, "r")
-    file_array = np.array(name_file.read().split(), dtype=float)
+    with open(filename) as f:
+        data = f.read()
+    file_array = np.array(data.split(), dtype=float)
     return file_array
 
 
