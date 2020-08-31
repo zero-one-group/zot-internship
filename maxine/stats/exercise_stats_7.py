@@ -13,16 +13,26 @@ def normal_dist(miu, sigma, draws):
 
 
 mean, sd = 1, 2
-sample_norm = normal_dist(mean, sd, 100)
-plt.hist(sample_norm, bins=10, density=True)
-plt.savefig('test2.png')
+nsim = 1000
+sample_mean = [np.mean((normal_dist(mean, sd, 100))) for _ in range(nsim)]
+sample_sd = [np.std((normal_dist(mean, sd, 100))) for _ in range(nsim)]
+sample_se = [np.std((normal_dist(mean, sd, 100)))/10 for _ in range(nsim)]
+sample_skewness = [stats.skew((normal_dist(mean, sd, 100))) for _ in range(nsim)]
+sample_kurtosis = [stats.kurtosis((normal_dist(mean, sd, 100))) for _ in
+                   range(nsim)]
 
-sample_norm
+plt.hist(sample_se, bins=100, label='sample std err')
+plt.hist(sample_mean, bins=100, label='sample mean')
+plt.hist(sample_sd, bins=100, label='sample std dev')
+plt.legend()
+plt.savefig('ex7_mean_se.png')
 
-print("sample mean is %s" % np.mean(sample_norm))
-print("sample standard deviation (measures variability of individual data to the mean) %s" 
-      % np.std(sample_norm))
-print("standard error of sample mean (how far the sample mean is to the true population mean): %s" 
-      % (np.std(sample_norm) / np.sqrt(len(sample_norm))))
-print("sample kurtosis is %s" % stats.kurtosis(sample_norm))
-print("sample skewness is %s" % stats.skew(sample_norm))
+plt.hist(sample_skewness, bins=100, label='skewness')
+plt.hist(sample_kurtosis, bins=100, label='kurtosis')
+plt.legend()
+plt.savefig('ex7_kurtosis_skew.png')
+
+
+"""standard error of sample mean (how far the sample mean is to the true
+population mean), while std dev measures the variability of the data to the
+mean"""

@@ -13,15 +13,19 @@ def uniform(theta, draws):
     return np.random.uniform(0, theta, size=draws)
 
 def max_uniform_estimator(theta, draws, nsim):
-    return list(max(uniform(theta,draws)) for sim in range(nsim))
+    return np.array(list(max(uniform(theta,draws)) for sim in range(nsim)))
 
 
 def rmse(array1, array2):
-    return np.sqrt(np.square(np.subtract(array1, array2)).mean())
+    error = array1 - array2
+    return np.sqrt(np.mean(error*error))
 
-estimator1 = max_uniform_estimator(10, 100, 1000)
-    
-plt.hist(estimator1, bins=50)
-plt.savefig('test.png')
+estimator_consistency = max_uniform_estimator(10, 100, 100000)
+estimator_bias = max_uniform_estimator(10, 100, 1000)
 
-rmse(estimator1, 10)
+plt.hist(estimator_bias, bins=100, label='unbiased')
+plt.hist(estimator_consistency, bins=100, label='consistent')
+plt.savefig('estimator_rmse.png')
+
+rmse(estimator_bias, 10)
+rmse(estimator_consistency, 10)
