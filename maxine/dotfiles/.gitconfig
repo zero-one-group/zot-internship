@@ -1,0 +1,8 @@
+#aliases
+	#alias 'git graph'='git log --all --graph --decorate --oneline'
+[user]
+	name = maxinems
+	email = maxinemalekhi@hotmail.com
+[core]
+	editor = nvim
+	excludesFile = /home/maxinems/.gitignore

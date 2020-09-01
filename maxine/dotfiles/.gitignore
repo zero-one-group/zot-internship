@@ -1,0 +1,7 @@
+#compiled source
+*.o
+*.
+
+#packages
+*.zip
+*.dmg
