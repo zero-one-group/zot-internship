@@ -4,7 +4,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 alias ls='ls -GFh'
-alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nodisplay'
+alias matlab='/Applications/Matlab_R2019b.app/bin/matlab -nodisplay'
 alias zot='ssh andrew@zog.hopto.org'
 
 

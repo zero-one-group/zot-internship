@@ -6,6 +6,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neomake/neomake'
 Plug 'morhetz/gruvbox'
+Plug 'preservim/nerdcommenter'
 call plug#end()
 
 let g:deoplete#enable_at_startup = 5 
