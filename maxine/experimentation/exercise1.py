@@ -14,20 +14,21 @@ import statsmodels.api as sm
 def beta(alpha, beta, draws):
     return np.random.beta(1.8, 1, size=100)
 
+#10% is the maximum proportion of sample that can lead to rejection of
+#null hypothesis to conclude a strong evidence of rejection of null hypothesis
 alpha = 0.1
 a = beta(1.8, 1, 100)
-t_test, pval = stats.ttest_1samp(a, 2)
+t_test, pval = stats.ttest_1samp(simulation, 2)
 if pval > alpha:
     print("accept H0")
 else:
     print("reject H0")
 
 power_one_sample = sm.stats.TTestPower()
-result = power_analysis.solve_power(nobs1=100, alpha=0.1, effect_size=0.8, alternative='smaller')
+result = power_one_sample.solve_power(nobs1=100, alpha=0.1, effect_size=0.8, alternative='smaller')
 print("The probability of rejecting the null hypothesis is ", result)
 
 
-
-#Type 1 error is when H0 is rejected when it should not be (H0 is true), it is related to the reliability of the test (alpha), 
-# Type 2 error is when H0 is not rejected when it should be (H0 is not true),
-# it is related to the power of the test (beta) 
+#Type 1 error is when H0 is rejected when it should not be (H0 is true), it is related to the reliability of the test (alpha),
+#Type 2 error is when H0 is not rejected when it should be (H0 is not true),
+#it is related to the power of the test (beta)
