@@ -25,8 +25,8 @@ def simulate_mixture_2(size):
     return np.where(us < 0.99, xs, ys)
 
 def split_data(data):
-    a_test = data[:int(len(data)/2)]
-    b_test = data[int(len(data)/2)::]
+    a_test = np.random.choice(data, size=int(len(data/2)))
+    b_test = np.random.choice(data, size=int(len(data/2)))
     return a_test, b_test
 
 def pooled_std(sample_a, sample_b):
