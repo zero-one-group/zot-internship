@@ -1,6 +1,6 @@
 '''
 Suppose the number of bookings of a user is i.i.d Poisson mixture of Pois(1) and Pois(5) with weights 99% and 1% respectively. Think of the mixture distribution as a combination of regular travellers and travel agents. Moreover, we only observe a user only if they make at least one booking. Think of this as a mixture of legitimate users that may book and illegitimate bots that would never book. The legitimate non-bookers are indistinguishable from the illegitimate bots.
-- Consider the negative binomial test (part 2). Assume there are no booking-rate differences in A and B (i.e. assuming the null hypothesis). Simulate A/B tests with 10k users, and show that applying the negative binomial test on bookings yields an inverted-U p-value sampling distribution.
+- Consider the negative binomial test (part 2). Assume there are no booking-rate differences in A and B (i.e. assuming the null hypothesis). Simulate A/B tests with 10k users, and show that applying the negative binomial test on bookings yields an U-shaped p-value sampling distribution.
 - Show that applying the same test on bookers yields a uniform p-value sampling distribution. Why?
 - Now assume that you can observe the non-bookers as well. Design the Welch test that takes into account the number of bookings, and show tha your experiment design yields a uniform p-value sampling distribution.
 - Suppose that for the users that received the B variant, their Poisson mixture is Pois(1.03) and Pois(5) with the same weights. How much power does the Welch test have?
@@ -43,7 +43,7 @@ def trim_data(data, portion):
     return sorted_data[:int(len(data)*(1-portion))]
 
 
-num_of_simulations = int(5e4)
+num_of_simulations = int(1e4)
 pval_booking = []
 pval_booker = []
 pval_booking_welch = []
