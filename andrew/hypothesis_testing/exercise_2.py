@@ -43,7 +43,7 @@ def trim_data(data, portion):
     return sorted_data[:int(len(data)*(1-portion))]
 
 
-num_of_simulations = int(1e4)
+num_of_simulations = int(5e4)
 pval_booking = []
 pval_booker = []
 pval_booking_welch = []
