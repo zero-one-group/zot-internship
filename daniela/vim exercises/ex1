@@ -1,0 +1,5 @@
+debugging  
+
+get commands in the last day
+log show -last 1d | wc -l
+
