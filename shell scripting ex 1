@@ -1,0 +1,54 @@
+#Command that lists files in the following manner
+Includes all files, including hidden files
+Sizes are listed in human readable format (e.g. 454M instead of 454279954)
+Files are ordered by recency
+Output is colorized
+
+ls -a -l -t -G -h
+
+total 20784
+drwx------  232 danielasugih  staff   7.3K Sep 29 12:03 .bash_sessions
+drwx------@   3 danielasugih  staff    96B Sep 29 07:26 Downloads
+drwx------@ 115 danielasugih  staff   3.6K Sep 29 07:26 .Trash
+drwx------@  10 danielasugih  staff   320B Sep 28 09:39 Desktop
+-rw-r--r--@   1 danielasugih  staff    14K Sep 28 07:26 .DS_Store
+-rw-------    1 danielasugih  staff    17K Sep 25 14:40 .bash_history
+drwxr-xr-x+  45 danielasugih  staff   1.4K Sep 25 14:11 .
+-rw-------    1 danielasugih  staff    16K Sep 25 14:11 .viminfo
+drwxr-xr-x    8 danielasugih  staff   256B Sep 25 14:10 nvim-osx64
+drwxr-xr-x    2 danielasugih  staff    64B Sep 25 14:09 .config
+-rw-r--r--    1 danielasugih  staff   9.7M Sep 25 13:49 nvim-macos.tar.gz
+drwxr-xr-x    4 danielasugih  staff   128B Sep 24 19:44 .vim
+drwxr-xr-x   10 danielasugih  staff   320B Sep 24 19:01 zot-internship
+-rw-r--r--@   1 danielasugih  staff    18B Sep 22 20:15 ~vimrc
+drwxr-xr-x    3 danielasugih  staff    96B Sep 22 20:03 custom-bin
+drwxr-xr-x   10 danielasugih  staff   320B Sep 21 17:48 pdb-tutorial
+drwx------@  77 danielasugih  staff   2.4K Sep 21 17:47 Library
+-rw-------    1 danielasugih  staff    38B Sep 15 19:56 .zsh_history
+drwxr-xr-x    9 danielasugih  staff   288B Sep  9 14:55 remote
+drwxr-xr-x    4 danielasugih  staff   128B Sep  9 14:30 demo
+drwxr-xr-x    2 danielasugih  staff    64B Sep  3 20:54 .vimrc
+-rw-r--r--    1 danielasugih  staff    25B Sep  3 20:54 .bashrc
+drwxr-xr-x   13 danielasugih  staff   416B Sep  3 20:49 bar
+-rw-------    1 danielasugih  staff     0B Sep  3 20:19 nohup.out
+drwx------    3 danielasugih  staff    96B Sep  1 18:52 .local
+drwxr-xr-x    3 danielasugih  staff    96B Sep  1 18:45 .cache
+-rw-r--r--    1 danielasugih  staff   516B Aug 31 19:57 TEST
+-rw-r--r--    1 danielasugih  staff     6B Aug 31 17:23 chinese
+drwxr-xr-x    8 danielasugih  staff   256B Aug 31 17:22 missing
+drwxr-xr-x    2 danielasugih  staff    64B Aug 31 12:29 marco.sh
+-rw-------    1 danielasugih  staff    12K Aug 31 12:08 .marco.sh.swp
+-rw-------    1 danielasugih  staff    12K Aug 31 10:35 .script.py.swp
+drwxr-xr-x    2 danielasugih  staff    64B Aug 28 16:27 foo bar
+-rw-------    1 danielasugih  staff    12K Aug 28 08:13 .mcd.sh.swp
+drwxr-xr-x    2 danielasugih  staff    64B Aug 27 22:14 last-modified.txt
+drwx------@  10 danielasugih  staff   320B Aug  4 09:37 Documents
+drwx------+   6 danielasugih  staff   192B Apr 26 11:02 Movies
+drwx------+   5 danielasugih  staff   160B Apr 26 11:02 Music
+-rw-r--r--@   1 danielasugih  staff   746B Apr 23 16:33 Chinese Lesson 1 .txt
+-r--------    1 danielasugih  staff     7B Apr 23 15:51 .CFUserTextEncoding
+drwx------@   3 danielasugih  staff    96B Apr 14 08:58 Applications
+drwxr-xr-x    5 root          admin   160B Apr  7 02:45 ..
+drwx------    3 danielasugih  staff    96B Apr  1  2019 .cups
+drwx------+   5 danielasugih  staff   160B Mar 11  2019 Pictures
+drwxr-xr-x+   4 danielasugih  staff   128B Mar  6  2019 Public
