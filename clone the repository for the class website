@@ -1,0 +1,24 @@
+git clone https://github.com/missing-semester/missing-semester
+
+# Explore version history using graph
+cd missing-semester 
+git log --all --graph --decorate 
+
+# Last person to modify README.md
+git checkout README.md 
+git log 
+Answer: Anish Athalye Fri Oct 2 2020
+
+# Commit message of the last modification to collections:
+git blame _config.yml -L 18,+5
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 18) collections:
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 19)   '2019':
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 20)     output: true
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 21)   '2020':
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 22)     output: true
+git show a88b4eac
+commit a88b4eac326483e29bdac5ee0a39b180948ae7fc
+Author: Anish Athalye <me@anishathalye.com>
+Date:   Fri Jan 17 15:26:30 2020 -0500
+
+    Redo lectures as a collection (commit message)
