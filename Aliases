@@ -1,0 +1,25 @@
+alias dc="cd"
+Danielas-MacBook-Air:~ danielasugih$ cd downloads
+Danielas-MacBook-Air:downloads danielasugih$ dc
+Danielas-MacBook-Air:~ danielasugih$ 
+
+Danielas-MacBook-Air:~ danielasugih$ history | awk '{$1="";print substr($0,2)}' | sort | uniq -c | sort -n | tail -n 10
+   3 configure.args-append --with-ca-bundle=${prefix}/share/curl/curl-ca-bundle.crt
+   3 curl https://stats.wikimedia.org/EN/TablesWikipediaZZ.htm
+   3 echo $MY_VAR
+   3 path:share/curl/curl-ca-bundle.crt:curl-ca-bundle
+   4 cd downloads
+   4 python main.py
+   6 cd ..
+   9 nvim
+  20 }
+  55 ls
+Danielas-MacBook-Air:~ danielasugih$ alias sl="ls"
+Danielas-MacBook-Air:~ danielasugih$ sl
+Applications		Music			demo			nvim-osx64
+Chinese Lesson 1 .txt	Pictures		foo bar			pdb-tutorial
+Desktop			Public			last-modified.txt	remote
+Documents		TEST			marco.sh		zot-internship
+Downloads		bar			missing			~vimrc
+Library			chinese			nohup.out
+Movies			custom-bin		nvim-macos.tar.gz
