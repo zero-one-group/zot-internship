@@ -1,0 +1,15 @@
+1. Password: correcthorsebatterystaple
+Number of possibilites: 100000P4 = 9.9994x10^19
+Entropy formula: log2(no of possibilities)
+Entropy = log2(9.9994x10^19) = 66.438475 (strong password) 
+
+2. Password: rg8Ql34g
+Number of possibilities: 62P8 = 1.3632x10^14
+Entropy = log2(1.3632x10^14) = 46.95405 (relatively strong)
+
+3. The stronger password is correcthorsebatterystaple. 
+
+4. Time taken to crack password
+correcthorsebatterystaple: 9.9994x10^19 / 10000 = 2.77x10^12 hours
+rg8Ql34g: 1.3632x10^14 / 10000 = 3,786,667 hours
+
